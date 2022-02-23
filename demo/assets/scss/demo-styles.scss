@@ -1,3 +1,4 @@
+$body-color: #212121;
 $nav-color: #8c4646;
 $danger-color: #b95950;
 $color-1: #486e60;
@@ -14,7 +15,7 @@ $color-3: #f2a679;
 html,
 body {
     font-family: "Arsenal", sans-serif;
-    color: #212121;
+    color: $body-color;
 }
 
 h1 {
@@ -27,12 +28,27 @@ h2 {
     margin-bottom: 0.5rem;
 }
 
+h4 {
+    margin: 0.5rem;
+}
+
 #demo-desc {
     margin-bottom: 2rem;
     div {
         padding: 0 2rem 1rem;
         display: inline-flex;
         flex-direction: column;
+    }
+}
+
+#view-on-github-btn {
+    display: inline-flex;
+    justify-content: space-between;
+    margin: 0 auto 2rem;
+    color: $body-color;
+    border: 1px solid desaturate($body-color, 50);
+    img {
+        margin-left: 1rem;
     }
 }
 
@@ -220,6 +236,10 @@ pre {
 
 .justify-content-center {
     justify-content: center;
+}
+
+.text-center {
+    text-align: center;
 }
 
 #uip-reset-btn {

@@ -20,6 +20,10 @@ h2 {
   margin-bottom: 0.5rem;
 }
 
+h4 {
+  margin: 0.5rem;
+}
+
 #demo-desc {
   margin-bottom: 2rem;
 }
@@ -32,6 +36,21 @@ h2 {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+}
+
+#view-on-github-btn {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 0 auto 2rem;
+  color: #212121;
+  border: 1px solid #212121;
+}
+#view-on-github-btn img {
+  margin-left: 1rem;
 }
 
 .demo-bg-danger {
@@ -234,6 +253,10 @@ pre {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.text-center {
+  text-align: center;
 }
 
 #uip-reset-btn {
