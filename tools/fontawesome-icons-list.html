@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fontawesome icons list</title>
+</head>
+
+<body>
+    <pre><code id="fontawesome-icons-list"></code></pre>
+    <script>
+        /* -----------------------------------------------------------------------
+        This script gets the latest icons by category from the Fontawesome API
+        ----------------------------------------------------------------------- */
+
+        // set the fontawesome version version here
+        const fontawesomeVersion = '6.0.0';
+
+        let params = {
+            "query": 'query {release (version: "' + fontawesomeVersion + '") { icons { id, membership {free} }}}'
+        }
+        fetch('https://api.fontawesome.com', {
+            method: 'post',
+            body: new URLSearchParams(params).toString(),
+            headers: {
+                'Content-type': 'application/x-www-form-urlencoded; charset=utf-8'
+            },
+            cache: 'no-store'
+        }).then(function (response) {
+            return response.json()
+        }).then(function (data) {
+            const icons = data.data.release.icons,
+            output = {
+                "solid": [],
+                "regular": [],
+                "brands": []
+            }
+            icons.forEach(icon => {
+                icon.membership.free.forEach(style => {
+                    output[style].push(icon.id);
+                });
+            });
+            document.getElementById('fontawesome-icons-list').innerHTML = JSON.stringify(output, null, 4);;
+        }).catch(function (error) {
+            console.log(error);
+        });
+    </script>
+</body>
+
+</html>

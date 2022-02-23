@@ -1,0 +1,334 @@
+$nav-color: #8c4646;
+$danger-color: #b95950;
+$color-1: #486e60;
+$color-2: #f2d091;
+$color-3: #f2a679;
+
+@media only screen and (min-width: 600px) {
+    .container {
+        width: 75vw;
+        margin: 0 auto;
+    }
+}
+
+html,
+body {
+    font-family: "Arsenal", sans-serif;
+    color: #212121;
+}
+
+h1 {
+    text-align: center;
+    color: #4a3939;
+    margin-bottom: 3rem;
+}
+
+h2 {
+    margin-bottom: 0.5rem;
+}
+
+#demo-desc {
+    margin-bottom: 2rem;
+    div {
+        padding: 0 2rem 1rem;
+        display: inline-flex;
+        flex-direction: column;
+    }
+}
+
+.demo-bg-danger {
+    background-color: $danger-color;
+}
+
+.demo-border-light {
+    color: darken($nav-color, 25);
+    border: 1px solid desaturate($color-3, 50);
+}
+
+.demo-bg-1 {
+    background-color: $color-1;
+}
+
+.demo-bg-2 {
+    color: darken($color-2, 60);
+    background-color: $color-2;
+}
+
+.demo-bg-3 {
+    color: darken($color-3, 60);
+    background-color: $color-3;
+}
+
+.demo-color-1-dark {
+    color: darken($color-1, 20);
+}
+
+.demo-color-2-dark {
+    color: darken($color-2, 50);
+}
+
+.demo-color-3-dark {
+    color: darken($color-3, 50);
+}
+
+.text-white {
+    color: #fff;
+}
+
+pre {
+    padding: 1rem;
+    background: #eee;
+    margin: 0 auto 60px;
+}
+
+.demo-btn {
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    &.demo-btn-sm {
+        font-size: 0.875rem;
+        padding: 0.5rem 1.5rem;
+    }
+    &.demo-btn-lg {
+        font-size: 22px;
+        padding: 20px;
+    }
+}
+
+.demo-link {
+    display: inline-block;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    margin-left: 1rem;
+    transition: ease-in all 200ms;
+    color: $nav-color;
+    &:hover {
+        color: #fff;
+        background-color: $nav-color;
+    }
+}
+
+.demo-nav {
+    margin-bottom: 60px;
+    a.demo-btn {
+        color: #fff;
+        background-color: $nav-color;
+        transition: ease-in all 200ms;
+        &.active {
+            background-color: #453838;
+            &:hover {
+                background-color: #453838;
+            }
+            cursor: default;
+        }
+        &:hover {
+            background-color: lighten(saturate($nav-color, 30), 10);
+        }
+    }
+}
+
+.demo-output {
+    transform-origin: center center;
+    transform: scale(1);
+    margin: 60px auto;
+    &.hidden {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+.demo-output-icon {
+    margin-top: 60px;
+    text-align: center;
+    i {
+        font-size: 8rem !important;
+    }
+}
+
+.demo-output-icon-sm {
+    margin: 10px 0;
+    text-align: center;
+    i {
+        font-size: 4rem !important;
+    }
+}
+
+.demo-wrapper {
+    width: calc(50% - 4px);
+    margin-bottom: 20px;
+    min-height: 11.25rem;
+    text-align: center;
+    border: 1px solid #ccc;
+    h2 {
+        margin: 0 0 1.5rem;
+    }
+    h3,
+    h4 {
+        margin: 0 auto 20px;
+        padding: 0.5rem 0;
+        &.demo-bg-1 {
+            color: #fff;
+            background-color: darken($color-1, 15);
+        }
+        &.demo-bg-2 {
+            color: darken($color-2, 60);
+            background-color: darken($color-2, 20);
+        }
+        &.demo-bg-3 {
+            color: darken($color-3, 60);
+            background-color: darken($color-3, 20);
+        }
+    }
+    .demo-btn {
+        margin: auto;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .demo-wrapper {
+        width: calc(33% - 4px);
+    }
+    #icon-library-select-wrapper {
+        max-width: 50%;
+    }
+}
+
+.d-flex {
+    display: flex;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.icon-picker-wrap {
+    margin: 0 auto 4rem;
+    margin-top: 10%;
+    text-align: center;
+}
+
+.justify-content-around {
+    justify-content: space-around;
+}
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+#uip-reset-btn {
+    margin-left: -1px;
+}
+
+#uip-select-input {
+    border: 1px solid #ccc;
+    padding: 0 1rem;
+}
+
+#icon-library-select-wrapper {
+    margin: 2rem auto 4rem;
+}
+
+// Buttons styles from https://codepen.io/foxeisen/pen/yqZbLN
+
+$btn-hover-effect-padding-vert: 22px;
+$btn-hover-effect-padding-horz: 36px;
+
+//MIXINS
+
+//transitions mixin
+@mixin transition-mix($property: all, $duration: 0.2s, $timing: linear, $delay: 0s) {
+    transition-property: $property;
+    transition-duration: $duration;
+    transition-timing-function: $timing;
+    transition-delay: $delay;
+}
+
+//position absolute mixin
+@mixin position-absolute($top: null, $left: null, $right: null, $bottom: null) {
+    position: absolute;
+    top: $top;
+    left: $left;
+    right: $right;
+    bottom: $bottom;
+}
+
+.btn-hover-effect {
+    @include transition-mix();
+
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    padding: $btn-hover-effect-padding-vert $btn-hover-effect-padding-horz;
+
+    transform: translateZ(0);
+
+    text-decoration: none;
+
+    overflow: hidden;
+}
+
+.btn-hover-effect--effect-4 {
+    /* overlay styles */
+    &:before {
+        @include position-absolute($top: 0, $left: 0);
+        @include transition-mix($property: transform);
+
+        display: block;
+        width: 300%;
+        height: 300%;
+
+        content: "";
+
+        transform: scale(0.5);
+        transform-origin: center center;
+
+        background-color: rgba(255, 255, 255, 0.2);
+
+        border-radius: 50%;
+
+        z-index: -1;
+    }
+
+    /* icon styles */
+    &:after {
+        @include position-absolute($top: 0, $left: 0);
+        content: " ";
+        // background-size: 28px 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        line-height: inherit;
+        opacity: 0;
+        transform: scale(1.4);
+        background: url("../images/angle-right-solid.svg") center no-repeat;
+    }
+
+    &.demo-bg-danger:after {
+        background: url("../images/times-solid.svg") center no-repeat;
+    }
+
+    &:hover {
+        color: transparent;
+
+        &:before {
+            transform: scale(2);
+            transform-origin: center center;
+        }
+
+        &:after {
+            @include transition-mix($delay: 0.2s);
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+}

@@ -1,0 +1,1113 @@
+@font-face {
+	font-family: 'ElegantIcons';
+	src:url('../fonts/ElegantIcons.eot');
+	src:url('../fonts/ElegantIcons.eot?#iefix') format('embedded-opentype'),
+		url('../fonts/ElegantIcons.woff') format('woff'),
+		url('../fonts/ElegantIcons.ttf') format('truetype'),
+		url('../fonts/ElegantIcons.svg#ElegantIcons') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+.elegant-icon {
+	font-family: 'ElegantIcons';
+	content: attr(data-icon);
+	speak: none;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.elegant-arrow_up, .elegant-arrow_down, .elegant-arrow_left, .elegant-arrow_right, .elegant-arrow_left-up, .elegant-arrow_right-up, .elegant-arrow_right-down, .elegant-arrow_left-down, .elegant-arrow-up-down, .elegant-arrow_up-down_alt, .elegant-arrow_left-right_alt, .elegant-arrow_left-right, .elegant-arrow_expand_alt2, .elegant-arrow_expand_alt, .elegant-arrow_condense, .elegant-arrow_expand, .elegant-arrow_move, .elegant-arrow_carrot-up, .elegant-arrow_carrot-down, .elegant-arrow_carrot-left, .elegant-arrow_carrot-right, .elegant-arrow_carrot-2up, .elegant-arrow_carrot-2down, .elegant-arrow_carrot-2left, .elegant-arrow_carrot-2right, .elegant-arrow_carrot-up_alt2, .elegant-arrow_carrot-down_alt2, .elegant-arrow_carrot-left_alt2, .elegant-arrow_carrot-right_alt2, .elegant-arrow_carrot-2up_alt2, .elegant-arrow_carrot-2down_alt2, .elegant-arrow_carrot-2left_alt2, .elegant-arrow_carrot-2right_alt2, .elegant-arrow_triangle-up, .elegant-arrow_triangle-down, .elegant-arrow_triangle-left, .elegant-arrow_triangle-right, .elegant-arrow_triangle-up_alt2, .elegant-arrow_triangle-down_alt2, .elegant-arrow_triangle-left_alt2, .elegant-arrow_triangle-right_alt2, .elegant-arrow_back, .elegant-icon_minus-06, .elegant-icon_plus, .elegant-icon_close, .elegant-icon_check, .elegant-icon_minus_alt2, .elegant-icon_plus_alt2, .elegant-icon_close_alt2, .elegant-icon_check_alt2, .elegant-icon_zoom-out_alt, .elegant-icon_zoom-in_alt, .elegant-icon_search, .elegant-icon_box-empty, .elegant-icon_box-selected, .elegant-icon_minus-box, .elegant-icon_plus-box, .elegant-icon_box-checked, .elegant-icon_circle-empty, .elegant-icon_circle-slelected, .elegant-icon_stop_alt2, .elegant-icon_stop, .elegant-icon_pause_alt2, .elegant-icon_pause, .elegant-icon_menu, .elegant-icon_menu-square_alt2, .elegant-icon_menu-circle_alt2, .elegant-icon_ul, .elegant-icon_ol, .elegant-icon_adjust-horiz, .elegant-icon_adjust-vert, .elegant-icon_document_alt, .elegant-icon_documents_alt, .elegant-icon_pencil, .elegant-icon_pencil-edit_alt, .elegant-icon_pencil-edit, .elegant-icon_folder-alt, .elegant-icon_folder-open_alt, .elegant-icon_folder-add_alt, .elegant-icon_info_alt, .elegant-icon_error-oct_alt, .elegant-icon_error-circle_alt, .elegant-icon_error-triangle_alt, .elegant-icon_question_alt2, .elegant-icon_question, .elegant-icon_comment_alt, .elegant-icon_chat_alt, .elegant-icon_vol-mute_alt, .elegant-icon_volume-low_alt, .elegant-icon_volume-high_alt, .elegant-icon_quotations, .elegant-icon_quotations_alt2, .elegant-icon_clock_alt, .elegant-icon_lock_alt, .elegant-icon_lock-open_alt, .elegant-icon_key_alt, .elegant-icon_cloud_alt, .elegant-icon_cloud-upload_alt, .elegant-icon_cloud-download_alt, .elegant-icon_image, .elegant-icon_images, .elegant-icon_lightbulb_alt, .elegant-icon_gift_alt, .elegant-icon_house_alt, .elegant-icon_genius, .elegant-icon_mobile, .elegant-icon_tablet, .elegant-icon_laptop, .elegant-icon_desktop, .elegant-icon_camera_alt, .elegant-icon_mail_alt, .elegant-icon_cone_alt, .elegant-icon_ribbon_alt, .elegant-icon_bag_alt, .elegant-icon_creditcard, .elegant-icon_cart_alt, .elegant-icon_paperclip, .elegant-icon_tag_alt, .elegant-icon_tags_alt, .elegant-icon_trash_alt, .elegant-icon_cursor_alt, .elegant-icon_mic_alt, .elegant-icon_compass_alt, .elegant-icon_pin_alt, .elegant-icon_pushpin_alt, .elegant-icon_map_alt, .elegant-icon_drawer_alt, .elegant-icon_toolbox_alt, .elegant-icon_book_alt, .elegant-icon_calendar, .elegant-icon_film, .elegant-icon_table, .elegant-icon_contacts_alt, .elegant-icon_headphones, .elegant-icon_lifesaver, .elegant-icon_piechart, .elegant-icon_refresh, .elegant-icon_link_alt, .elegant-icon_link, .elegant-icon_loading, .elegant-icon_blocked, .elegant-icon_archive_alt, .elegant-icon_heart_alt, .elegant-icon_star_alt, .elegant-icon_star-half_alt, .elegant-icon_star, .elegant-icon_star-half, .elegant-icon_tools, .elegant-icon_tool, .elegant-icon_cog, .elegant-icon_cogs, .elegant-arrow_up_alt, .elegant-arrow_down_alt, .elegant-arrow_left_alt, .elegant-arrow_right_alt, .elegant-arrow_left-up_alt, .elegant-arrow_right-up_alt, .elegant-arrow_right-down_alt, .elegant-arrow_left-down_alt, .elegant-arrow_condense_alt, .elegant-arrow_expand_alt3, .elegant-arrow_carrot_up_alt, .elegant-arrow_carrot-down_alt, .elegant-arrow_carrot-left_alt, .elegant-arrow_carrot-right_alt, .elegant-arrow_carrot-2up_alt, .elegant-arrow_carrot-2dwnn_alt, .elegant-arrow_carrot-2left_alt, .elegant-arrow_carrot-2right_alt, .elegant-arrow_triangle-up_alt, .elegant-arrow_triangle-down_alt, .elegant-arrow_triangle-left_alt, .elegant-arrow_triangle-right_alt, .elegant-icon_minus_alt, .elegant-icon_plus_alt, .elegant-icon_close_alt, .elegant-icon_check_alt, .elegant-icon_zoom-out, .elegant-icon_zoom-in, .elegant-icon_stop_alt, .elegant-icon_menu-square_alt, .elegant-icon_menu-circle_alt, .elegant-icon_document, .elegant-icon_documents, .elegant-icon_pencil_alt, .elegant-icon_folder, .elegant-icon_folder-open, .elegant-icon_folder-add, .elegant-icon_folder_upload, .elegant-icon_folder_download, .elegant-icon_info, .elegant-icon_error-circle, .elegant-icon_error-oct, .elegant-icon_error-triangle, .elegant-icon_question_alt, .elegant-icon_comment, .elegant-icon_chat, .elegant-icon_vol-mute, .elegant-icon_volume-low, .elegant-icon_volume-high, .elegant-icon_quotations_alt, .elegant-icon_clock, .elegant-icon_lock, .elegant-icon_lock-open, .elegant-icon_key, .elegant-icon_cloud, .elegant-icon_cloud-upload, .elegant-icon_cloud-download, .elegant-icon_lightbulb, .elegant-icon_gift, .elegant-icon_house, .elegant-icon_camera, .elegant-icon_mail, .elegant-icon_cone, .elegant-icon_ribbon, .elegant-icon_bag, .elegant-icon_cart, .elegant-icon_tag, .elegant-icon_tags, .elegant-icon_trash, .elegant-icon_cursor, .elegant-icon_mic, .elegant-icon_compass, .elegant-icon_pin, .elegant-icon_pushpin, .elegant-icon_map, .elegant-icon_drawer, .elegant-icon_toolbox, .elegant-icon_book, .elegant-icon_contacts, .elegant-icon_archive, .elegant-icon_heart, .elegant-icon_profile, .elegant-icon_group, .elegant-icon_grid-2x2, .elegant-icon_grid-3x3, .elegant-icon_music, .elegant-icon_pause_alt, .elegant-icon_phone, .elegant-icon_upload, .elegant-icon_download, .elegant-social_facebook, .elegant-social_twitter, .elegant-social_pinterest, .elegant-social_googleplus, .elegant-social_tumblr, .elegant-social_tumbleupon, .elegant-social_wordpress, .elegant-social_instagram, .elegant-social_dribbble, .elegant-social_vimeo, .elegant-social_linkedin, .elegant-social_rss, .elegant-social_deviantart, .elegant-social_share, .elegant-social_myspace, .elegant-social_skype, .elegant-social_youtube, .elegant-social_picassa, .elegant-social_googledrive, .elegant-social_flickr, .elegant-social_blogger, .elegant-social_spotify, .elegant-social_delicious, .elegant-social_facebook_circle, .elegant-social_twitter_circle, .elegant-social_pinterest_circle, .elegant-social_googleplus_circle, .elegant-social_tumblr_circle, .elegant-social_stumbleupon_circle, .elegant-social_wordpress_circle, .elegant-social_instagram_circle, .elegant-social_dribbble_circle, .elegant-social_vimeo_circle, .elegant-social_linkedin_circle, .elegant-social_rss_circle, .elegant-social_deviantart_circle, .elegant-social_share_circle, .elegant-social_myspace_circle, .elegant-social_skype_circle, .elegant-social_youtube_circle, .elegant-social_picassa_circle, .elegant-social_googledrive_alt2, .elegant-social_flickr_circle, .elegant-social_blogger_circle, .elegant-social_spotify_circle, .elegant-social_delicious_circle, .elegant-social_facebook_square, .elegant-social_twitter_square, .elegant-social_pinterest_square, .elegant-social_googleplus_square, .elegant-social_tumblr_square, .elegant-social_stumbleupon_square, .elegant-social_wordpress_square, .elegant-social_instagram_square, .elegant-social_dribbble_square, .elegant-social_vimeo_square, .elegant-social_linkedin_square, .elegant-social_rss_square, .elegant-social_deviantart_square, .elegant-social_share_square, .elegant-social_myspace_square, .elegant-social_skype_square, .elegant-social_youtube_square, .elegant-social_picassa_square, .elegant-social_googledrive_square, .elegant-social_flickr_square, .elegant-social_blogger_square, .elegant-social_spotify_square, .elegant-social_delicious_square, .elegant-icon_printer, .elegant-icon_calulator, .elegant-icon_building, .elegant-icon_floppy, .elegant-icon_drive, .elegant-icon_search-2, .elegant-icon_id, .elegant-icon_id-2, .elegant-icon_puzzle, .elegant-icon_like, .elegant-icon_dislike, .elegant-icon_mug, .elegant-icon_currency, .elegant-icon_wallet, .elegant-icon_pens, .elegant-icon_easel, .elegant-icon_flowchart, .elegant-icon_datareport, .elegant-icon_briefcase, .elegant-icon_shield, .elegant-icon_percent, .elegant-icon_globe, .elegant-icon_globe-2, .elegant-icon_target, .elegant-icon_hourglass, .elegant-icon_balance, .elegant-icon_rook, .elegant-icon_printer-alt, .elegant-icon_calculator_alt, .elegant-icon_building_alt, .elegant-icon_floppy_alt, .elegant-icon_drive_alt, .elegant-icon_search_alt, .elegant-icon_id_alt, .elegant-icon_id-2_alt, .elegant-icon_puzzle_alt, .elegant-icon_like_alt, .elegant-icon_dislike_alt, .elegant-icon_mug_alt, .elegant-icon_currency_alt, .elegant-icon_wallet_alt, .elegant-icon_pens_alt, .elegant-icon_easel_alt, .elegant-icon_flowchart_alt, .elegant-icon_datareport_alt, .elegant-icon_briefcase_alt, .elegant-icon_shield_alt, .elegant-icon_percent_alt, .elegant-icon_globe_alt, .elegant-icon_clipboard {
+	font-family: 'ElegantIcons';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+.elegant-arrow_up:before {
+	content: "\21";
+}
+.elegant-arrow_down:before {
+	content: "\22";
+}
+.elegant-arrow_left:before {
+	content: "\23";
+}
+.elegant-arrow_right:before {
+	content: "\24";
+}
+.elegant-arrow_left-up:before {
+	content: "\25";
+}
+.elegant-arrow_right-up:before {
+	content: "\26";
+}
+.elegant-arrow_right-down:before {
+	content: "\27";
+}
+.elegant-arrow_left-down:before {
+	content: "\28";
+}
+.elegant-arrow-up-down:before {
+	content: "\29";
+}
+.elegant-arrow_up-down_alt:before {
+	content: "\2a";
+}
+.elegant-arrow_left-right_alt:before {
+	content: "\2b";
+}
+.elegant-arrow_left-right:before {
+	content: "\2c";
+}
+.elegant-arrow_expand_alt2:before {
+	content: "\2d";
+}
+.elegant-arrow_expand_alt:before {
+	content: "\2e";
+}
+.elegant-arrow_condense:before {
+	content: "\2f";
+}
+.elegant-arrow_expand:before {
+	content: "\30";
+}
+.elegant-arrow_move:before {
+	content: "\31";
+}
+.elegant-arrow_carrot-up:before {
+	content: "\32";
+}
+.elegant-arrow_carrot-down:before {
+	content: "\33";
+}
+.elegant-arrow_carrot-left:before {
+	content: "\34";
+}
+.elegant-arrow_carrot-right:before {
+	content: "\35";
+}
+.elegant-arrow_carrot-2up:before {
+	content: "\36";
+}
+.elegant-arrow_carrot-2down:before {
+	content: "\37";
+}
+.elegant-arrow_carrot-2left:before {
+	content: "\38";
+}
+.elegant-arrow_carrot-2right:before {
+	content: "\39";
+}
+.elegant-arrow_carrot-up_alt2:before {
+	content: "\3a";
+}
+.elegant-arrow_carrot-down_alt2:before {
+	content: "\3b";
+}
+.elegant-arrow_carrot-left_alt2:before {
+	content: "\3c";
+}
+.elegant-arrow_carrot-right_alt2:before {
+	content: "\3d";
+}
+.elegant-arrow_carrot-2up_alt2:before {
+	content: "\3e";
+}
+.elegant-arrow_carrot-2down_alt2:before {
+	content: "\3f";
+}
+.elegant-arrow_carrot-2left_alt2:before {
+	content: "\40";
+}
+.elegant-arrow_carrot-2right_alt2:before {
+	content: "\41";
+}
+.elegant-arrow_triangle-up:before {
+	content: "\42";
+}
+.elegant-arrow_triangle-down:before {
+	content: "\43";
+}
+.elegant-arrow_triangle-left:before {
+	content: "\44";
+}
+.elegant-arrow_triangle-right:before {
+	content: "\45";
+}
+.elegant-arrow_triangle-up_alt2:before {
+	content: "\46";
+}
+.elegant-arrow_triangle-down_alt2:before {
+	content: "\47";
+}
+.elegant-arrow_triangle-left_alt2:before {
+	content: "\48";
+}
+.elegant-arrow_triangle-right_alt2:before {
+	content: "\49";
+}
+.elegant-arrow_back:before {
+	content: "\4a";
+}
+.elegant-icon_minus-06:before {
+	content: "\4b";
+}
+.elegant-icon_plus:before {
+	content: "\4c";
+}
+.elegant-icon_close:before {
+	content: "\4d";
+}
+.elegant-icon_check:before {
+	content: "\4e";
+}
+.elegant-icon_minus_alt2:before {
+	content: "\4f";
+}
+.elegant-icon_plus_alt2:before {
+	content: "\50";
+}
+.elegant-icon_close_alt2:before {
+	content: "\51";
+}
+.elegant-icon_check_alt2:before {
+	content: "\52";
+}
+.elegant-icon_zoom-out_alt:before {
+	content: "\53";
+}
+.elegant-icon_zoom-in_alt:before {
+	content: "\54";
+}
+.elegant-icon_search:before {
+	content: "\55";
+}
+.elegant-icon_box-empty:before {
+	content: "\56";
+}
+.elegant-icon_box-selected:before {
+	content: "\57";
+}
+.elegant-icon_minus-box:before {
+	content: "\58";
+}
+.elegant-icon_plus-box:before {
+	content: "\59";
+}
+.elegant-icon_box-checked:before {
+	content: "\5a";
+}
+.elegant-icon_circle-empty:before {
+	content: "\5b";
+}
+.elegant-icon_circle-slelected:before {
+	content: "\5c";
+}
+.elegant-icon_stop_alt2:before {
+	content: "\5d";
+}
+.elegant-icon_stop:before {
+	content: "\5e";
+}
+.elegant-icon_pause_alt2:before {
+	content: "\5f";
+}
+.elegant-icon_pause:before {
+	content: "\60";
+}
+.elegant-icon_menu:before {
+	content: "\61";
+}
+.elegant-icon_menu-square_alt2:before {
+	content: "\62";
+}
+.elegant-icon_menu-circle_alt2:before {
+	content: "\63";
+}
+.elegant-icon_ul:before {
+	content: "\64";
+}
+.elegant-icon_ol:before {
+	content: "\65";
+}
+.elegant-icon_adjust-horiz:before {
+	content: "\66";
+}
+.elegant-icon_adjust-vert:before {
+	content: "\67";
+}
+.elegant-icon_document_alt:before {
+	content: "\68";
+}
+.elegant-icon_documents_alt:before {
+	content: "\69";
+}
+.elegant-icon_pencil:before {
+	content: "\6a";
+}
+.elegant-icon_pencil-edit_alt:before {
+	content: "\6b";
+}
+.elegant-icon_pencil-edit:before {
+	content: "\6c";
+}
+.elegant-icon_folder-alt:before {
+	content: "\6d";
+}
+.elegant-icon_folder-open_alt:before {
+	content: "\6e";
+}
+.elegant-icon_folder-add_alt:before {
+	content: "\6f";
+}
+.elegant-icon_info_alt:before {
+	content: "\70";
+}
+.elegant-icon_error-oct_alt:before {
+	content: "\71";
+}
+.elegant-icon_error-circle_alt:before {
+	content: "\72";
+}
+.elegant-icon_error-triangle_alt:before {
+	content: "\73";
+}
+.elegant-icon_question_alt2:before {
+	content: "\74";
+}
+.elegant-icon_question:before {
+	content: "\75";
+}
+.elegant-icon_comment_alt:before {
+	content: "\76";
+}
+.elegant-icon_chat_alt:before {
+	content: "\77";
+}
+.elegant-icon_vol-mute_alt:before {
+	content: "\78";
+}
+.elegant-icon_volume-low_alt:before {
+	content: "\79";
+}
+.elegant-icon_volume-high_alt:before {
+	content: "\7a";
+}
+.elegant-icon_quotations:before {
+	content: "\7b";
+}
+.elegant-icon_quotations_alt2:before {
+	content: "\7c";
+}
+.elegant-icon_clock_alt:before {
+	content: "\7d";
+}
+.elegant-icon_lock_alt:before {
+	content: "\7e";
+}
+.elegant-icon_lock-open_alt:before {
+	content: "\e000";
+}
+.elegant-icon_key_alt:before {
+	content: "\e001";
+}
+.elegant-icon_cloud_alt:before {
+	content: "\e002";
+}
+.elegant-icon_cloud-upload_alt:before {
+	content: "\e003";
+}
+.elegant-icon_cloud-download_alt:before {
+	content: "\e004";
+}
+.elegant-icon_image:before {
+	content: "\e005";
+}
+.elegant-icon_images:before {
+	content: "\e006";
+}
+.elegant-icon_lightbulb_alt:before {
+	content: "\e007";
+}
+.elegant-icon_gift_alt:before {
+	content: "\e008";
+}
+.elegant-icon_house_alt:before {
+	content: "\e009";
+}
+.elegant-icon_genius:before {
+	content: "\e00a";
+}
+.elegant-icon_mobile:before {
+	content: "\e00b";
+}
+.elegant-icon_tablet:before {
+	content: "\e00c";
+}
+.elegant-icon_laptop:before {
+	content: "\e00d";
+}
+.elegant-icon_desktop:before {
+	content: "\e00e";
+}
+.elegant-icon_camera_alt:before {
+	content: "\e00f";
+}
+.elegant-icon_mail_alt:before {
+	content: "\e010";
+}
+.elegant-icon_cone_alt:before {
+	content: "\e011";
+}
+.elegant-icon_ribbon_alt:before {
+	content: "\e012";
+}
+.elegant-icon_bag_alt:before {
+	content: "\e013";
+}
+.elegant-icon_creditcard:before {
+	content: "\e014";
+}
+.elegant-icon_cart_alt:before {
+	content: "\e015";
+}
+.elegant-icon_paperclip:before {
+	content: "\e016";
+}
+.elegant-icon_tag_alt:before {
+	content: "\e017";
+}
+.elegant-icon_tags_alt:before {
+	content: "\e018";
+}
+.elegant-icon_trash_alt:before {
+	content: "\e019";
+}
+.elegant-icon_cursor_alt:before {
+	content: "\e01a";
+}
+.elegant-icon_mic_alt:before {
+	content: "\e01b";
+}
+.elegant-icon_compass_alt:before {
+	content: "\e01c";
+}
+.elegant-icon_pin_alt:before {
+	content: "\e01d";
+}
+.elegant-icon_pushpin_alt:before {
+	content: "\e01e";
+}
+.elegant-icon_map_alt:before {
+	content: "\e01f";
+}
+.elegant-icon_drawer_alt:before {
+	content: "\e020";
+}
+.elegant-icon_toolbox_alt:before {
+	content: "\e021";
+}
+.elegant-icon_book_alt:before {
+	content: "\e022";
+}
+.elegant-icon_calendar:before {
+	content: "\e023";
+}
+.elegant-icon_film:before {
+	content: "\e024";
+}
+.elegant-icon_table:before {
+	content: "\e025";
+}
+.elegant-icon_contacts_alt:before {
+	content: "\e026";
+}
+.elegant-icon_headphones:before {
+	content: "\e027";
+}
+.elegant-icon_lifesaver:before {
+	content: "\e028";
+}
+.elegant-icon_piechart:before {
+	content: "\e029";
+}
+.elegant-icon_refresh:before {
+	content: "\e02a";
+}
+.elegant-icon_link_alt:before {
+	content: "\e02b";
+}
+.elegant-icon_link:before {
+	content: "\e02c";
+}
+.elegant-icon_loading:before {
+	content: "\e02d";
+}
+.elegant-icon_blocked:before {
+	content: "\e02e";
+}
+.elegant-icon_archive_alt:before {
+	content: "\e02f";
+}
+.elegant-icon_heart_alt:before {
+	content: "\e030";
+}
+.elegant-icon_star_alt:before {
+	content: "\e031";
+}
+.elegant-icon_star-half_alt:before {
+	content: "\e032";
+}
+.elegant-icon_star:before {
+	content: "\e033";
+}
+.elegant-icon_star-half:before {
+	content: "\e034";
+}
+.elegant-icon_tools:before {
+	content: "\e035";
+}
+.elegant-icon_tool:before {
+	content: "\e036";
+}
+.elegant-icon_cog:before {
+	content: "\e037";
+}
+.elegant-icon_cogs:before {
+	content: "\e038";
+}
+.elegant-arrow_up_alt:before {
+	content: "\e039";
+}
+.elegant-arrow_down_alt:before {
+	content: "\e03a";
+}
+.elegant-arrow_left_alt:before {
+	content: "\e03b";
+}
+.elegant-arrow_right_alt:before {
+	content: "\e03c";
+}
+.elegant-arrow_left-up_alt:before {
+	content: "\e03d";
+}
+.elegant-arrow_right-up_alt:before {
+	content: "\e03e";
+}
+.elegant-arrow_right-down_alt:before {
+	content: "\e03f";
+}
+.elegant-arrow_left-down_alt:before {
+	content: "\e040";
+}
+.elegant-arrow_condense_alt:before {
+	content: "\e041";
+}
+.elegant-arrow_expand_alt3:before {
+	content: "\e042";
+}
+.elegant-arrow_carrot_up_alt:before {
+	content: "\e043";
+}
+.elegant-arrow_carrot-down_alt:before {
+	content: "\e044";
+}
+.elegant-arrow_carrot-left_alt:before {
+	content: "\e045";
+}
+.elegant-arrow_carrot-right_alt:before {
+	content: "\e046";
+}
+.elegant-arrow_carrot-2up_alt:before {
+	content: "\e047";
+}
+.elegant-arrow_carrot-2dwnn_alt:before {
+	content: "\e048";
+}
+.elegant-arrow_carrot-2left_alt:before {
+	content: "\e049";
+}
+.elegant-arrow_carrot-2right_alt:before {
+	content: "\e04a";
+}
+.elegant-arrow_triangle-up_alt:before {
+	content: "\e04b";
+}
+.elegant-arrow_triangle-down_alt:before {
+	content: "\e04c";
+}
+.elegant-arrow_triangle-left_alt:before {
+	content: "\e04d";
+}
+.elegant-arrow_triangle-right_alt:before {
+	content: "\e04e";
+}
+.elegant-icon_minus_alt:before {
+	content: "\e04f";
+}
+.elegant-icon_plus_alt:before {
+	content: "\e050";
+}
+.elegant-icon_close_alt:before {
+	content: "\e051";
+}
+.elegant-icon_check_alt:before {
+	content: "\e052";
+}
+.elegant-icon_zoom-out:before {
+	content: "\e053";
+}
+.elegant-icon_zoom-in:before {
+	content: "\e054";
+}
+.elegant-icon_stop_alt:before {
+	content: "\e055";
+}
+.elegant-icon_menu-square_alt:before {
+	content: "\e056";
+}
+.elegant-icon_menu-circle_alt:before {
+	content: "\e057";
+}
+.elegant-icon_document:before {
+	content: "\e058";
+}
+.elegant-icon_documents:before {
+	content: "\e059";
+}
+.elegant-icon_pencil_alt:before {
+	content: "\e05a";
+}
+.elegant-icon_folder:before {
+	content: "\e05b";
+}
+.elegant-icon_folder-open:before {
+	content: "\e05c";
+}
+.elegant-icon_folder-add:before {
+	content: "\e05d";
+}
+.elegant-icon_folder_upload:before {
+	content: "\e05e";
+}
+.elegant-icon_folder_download:before {
+	content: "\e05f";
+}
+.elegant-icon_info:before {
+	content: "\e060";
+}
+.elegant-icon_error-circle:before {
+	content: "\e061";
+}
+.elegant-icon_error-oct:before {
+	content: "\e062";
+}
+.elegant-icon_error-triangle:before {
+	content: "\e063";
+}
+.elegant-icon_question_alt:before {
+	content: "\e064";
+}
+.elegant-icon_comment:before {
+	content: "\e065";
+}
+.elegant-icon_chat:before {
+	content: "\e066";
+}
+.elegant-icon_vol-mute:before {
+	content: "\e067";
+}
+.elegant-icon_volume-low:before {
+	content: "\e068";
+}
+.elegant-icon_volume-high:before {
+	content: "\e069";
+}
+.elegant-icon_quotations_alt:before {
+	content: "\e06a";
+}
+.elegant-icon_clock:before {
+	content: "\e06b";
+}
+.elegant-icon_lock:before {
+	content: "\e06c";
+}
+.elegant-icon_lock-open:before {
+	content: "\e06d";
+}
+.elegant-icon_key:before {
+	content: "\e06e";
+}
+.elegant-icon_cloud:before {
+	content: "\e06f";
+}
+.elegant-icon_cloud-upload:before {
+	content: "\e070";
+}
+.elegant-icon_cloud-download:before {
+	content: "\e071";
+}
+.elegant-icon_lightbulb:before {
+	content: "\e072";
+}
+.elegant-icon_gift:before {
+	content: "\e073";
+}
+.elegant-icon_house:before {
+	content: "\e074";
+}
+.elegant-icon_camera:before {
+	content: "\e075";
+}
+.elegant-icon_mail:before {
+	content: "\e076";
+}
+.elegant-icon_cone:before {
+	content: "\e077";
+}
+.elegant-icon_ribbon:before {
+	content: "\e078";
+}
+.elegant-icon_bag:before {
+	content: "\e079";
+}
+.elegant-icon_cart:before {
+	content: "\e07a";
+}
+.elegant-icon_tag:before {
+	content: "\e07b";
+}
+.elegant-icon_tags:before {
+	content: "\e07c";
+}
+.elegant-icon_trash:before {
+	content: "\e07d";
+}
+.elegant-icon_cursor:before {
+	content: "\e07e";
+}
+.elegant-icon_mic:before {
+	content: "\e07f";
+}
+.elegant-icon_compass:before {
+	content: "\e080";
+}
+.elegant-icon_pin:before {
+	content: "\e081";
+}
+.elegant-icon_pushpin:before {
+	content: "\e082";
+}
+.elegant-icon_map:before {
+	content: "\e083";
+}
+.elegant-icon_drawer:before {
+	content: "\e084";
+}
+.elegant-icon_toolbox:before {
+	content: "\e085";
+}
+.elegant-icon_book:before {
+	content: "\e086";
+}
+.elegant-icon_contacts:before {
+	content: "\e087";
+}
+.elegant-icon_archive:before {
+	content: "\e088";
+}
+.elegant-icon_heart:before {
+	content: "\e089";
+}
+.elegant-icon_profile:before {
+	content: "\e08a";
+}
+.elegant-icon_group:before {
+	content: "\e08b";
+}
+.elegant-icon_grid-2x2:before {
+	content: "\e08c";
+}
+.elegant-icon_grid-3x3:before {
+	content: "\e08d";
+}
+.elegant-icon_music:before {
+	content: "\e08e";
+}
+.elegant-icon_pause_alt:before {
+	content: "\e08f";
+}
+.elegant-icon_phone:before {
+	content: "\e090";
+}
+.elegant-icon_upload:before {
+	content: "\e091";
+}
+.elegant-icon_download:before {
+	content: "\e092";
+}
+.elegant-social_facebook:before {
+	content: "\e093";
+}
+.elegant-social_twitter:before {
+	content: "\e094";
+}
+.elegant-social_pinterest:before {
+	content: "\e095";
+}
+.elegant-social_googleplus:before {
+	content: "\e096";
+}
+.elegant-social_tumblr:before {
+	content: "\e097";
+}
+.elegant-social_tumbleupon:before {
+	content: "\e098";
+}
+.elegant-social_wordpress:before {
+	content: "\e099";
+}
+.elegant-social_instagram:before {
+	content: "\e09a";
+}
+.elegant-social_dribbble:before {
+	content: "\e09b";
+}
+.elegant-social_vimeo:before {
+	content: "\e09c";
+}
+.elegant-social_linkedin:before {
+	content: "\e09d";
+}
+.elegant-social_rss:before {
+	content: "\e09e";
+}
+.elegant-social_deviantart:before {
+	content: "\e09f";
+}
+.elegant-social_share:before {
+	content: "\e0a0";
+}
+.elegant-social_myspace:before {
+	content: "\e0a1";
+}
+.elegant-social_skype:before {
+	content: "\e0a2";
+}
+.elegant-social_youtube:before {
+	content: "\e0a3";
+}
+.elegant-social_picassa:before {
+	content: "\e0a4";
+}
+.elegant-social_googledrive:before {
+	content: "\e0a5";
+}
+.elegant-social_flickr:before {
+	content: "\e0a6";
+}
+.elegant-social_blogger:before {
+	content: "\e0a7";
+}
+.elegant-social_spotify:before {
+	content: "\e0a8";
+}
+.elegant-social_delicious:before {
+	content: "\e0a9";
+}
+.elegant-social_facebook_circle:before {
+	content: "\e0aa";
+}
+.elegant-social_twitter_circle:before {
+	content: "\e0ab";
+}
+.elegant-social_pinterest_circle:before {
+	content: "\e0ac";
+}
+.elegant-social_googleplus_circle:before {
+	content: "\e0ad";
+}
+.elegant-social_tumblr_circle:before {
+	content: "\e0ae";
+}
+.elegant-social_stumbleupon_circle:before {
+	content: "\e0af";
+}
+.elegant-social_wordpress_circle:before {
+	content: "\e0b0";
+}
+.elegant-social_instagram_circle:before {
+	content: "\e0b1";
+}
+.elegant-social_dribbble_circle:before {
+	content: "\e0b2";
+}
+.elegant-social_vimeo_circle:before {
+	content: "\e0b3";
+}
+.elegant-social_linkedin_circle:before {
+	content: "\e0b4";
+}
+.elegant-social_rss_circle:before {
+	content: "\e0b5";
+}
+.elegant-social_deviantart_circle:before {
+	content: "\e0b6";
+}
+.elegant-social_share_circle:before {
+	content: "\e0b7";
+}
+.elegant-social_myspace_circle:before {
+	content: "\e0b8";
+}
+.elegant-social_skype_circle:before {
+	content: "\e0b9";
+}
+.elegant-social_youtube_circle:before {
+	content: "\e0ba";
+}
+.elegant-social_picassa_circle:before {
+	content: "\e0bb";
+}
+.elegant-social_googledrive_alt2:before {
+	content: "\e0bc";
+}
+.elegant-social_flickr_circle:before {
+	content: "\e0bd";
+}
+.elegant-social_blogger_circle:before {
+	content: "\e0be";
+}
+.elegant-social_spotify_circle:before {
+	content: "\e0bf";
+}
+.elegant-social_delicious_circle:before {
+	content: "\e0c0";
+}
+.elegant-social_facebook_square:before {
+	content: "\e0c1";
+}
+.elegant-social_twitter_square:before {
+	content: "\e0c2";
+}
+.elegant-social_pinterest_square:before {
+	content: "\e0c3";
+}
+.elegant-social_googleplus_square:before {
+	content: "\e0c4";
+}
+.elegant-social_tumblr_square:before {
+	content: "\e0c5";
+}
+.elegant-social_stumbleupon_square:before {
+	content: "\e0c6";
+}
+.elegant-social_wordpress_square:before {
+	content: "\e0c7";
+}
+.elegant-social_instagram_square:before {
+	content: "\e0c8";
+}
+.elegant-social_dribbble_square:before {
+	content: "\e0c9";
+}
+.elegant-social_vimeo_square:before {
+	content: "\e0ca";
+}
+.elegant-social_linkedin_square:before {
+	content: "\e0cb";
+}
+.elegant-social_rss_square:before {
+	content: "\e0cc";
+}
+.elegant-social_deviantart_square:before {
+	content: "\e0cd";
+}
+.elegant-social_share_square:before {
+	content: "\e0ce";
+}
+.elegant-social_myspace_square:before {
+	content: "\e0cf";
+}
+.elegant-social_skype_square:before {
+	content: "\e0d0";
+}
+.elegant-social_youtube_square:before {
+	content: "\e0d1";
+}
+.elegant-social_picassa_square:before {
+	content: "\e0d2";
+}
+.elegant-social_googledrive_square:before {
+	content: "\e0d3";
+}
+.elegant-social_flickr_square:before {
+	content: "\e0d4";
+}
+.elegant-social_blogger_square:before {
+	content: "\e0d5";
+}
+.elegant-social_spotify_square:before {
+	content: "\e0d6";
+}
+.elegant-social_delicious_square:before {
+	content: "\e0d7";
+}
+.elegant-icon_printer:before {
+	content: "\e103";
+}
+.elegant-icon_calulator:before {
+	content: "\e0ee";
+}
+.elegant-icon_building:before {
+	content: "\e0ef";
+}
+.elegant-icon_floppy:before {
+	content: "\e0e8";
+}
+.elegant-icon_drive:before {
+	content: "\e0ea";
+}
+.elegant-icon_search-2:before {
+	content: "\e101";
+}
+.elegant-icon_id:before {
+	content: "\e107";
+}
+.elegant-icon_id-2:before {
+	content: "\e108";
+}
+.elegant-icon_puzzle:before {
+	content: "\e102";
+}
+.elegant-icon_like:before {
+	content: "\e106";
+}
+.elegant-icon_dislike:before {
+	content: "\e0eb";
+}
+.elegant-icon_mug:before {
+	content: "\e105";
+}
+.elegant-icon_currency:before {
+	content: "\e0ed";
+}
+.elegant-icon_wallet:before {
+	content: "\e100";
+}
+.elegant-icon_pens:before {
+	content: "\e104";
+}
+.elegant-icon_easel:before {
+	content: "\e0e9";
+}
+.elegant-icon_flowchart:before {
+	content: "\e109";
+}
+.elegant-icon_datareport:before {
+	content: "\e0ec";
+}
+.elegant-icon_briefcase:before {
+	content: "\e0fe";
+}
+.elegant-icon_shield:before {
+	content: "\e0f6";
+}
+.elegant-icon_percent:before {
+	content: "\e0fb";
+}
+.elegant-icon_globe:before {
+	content: "\e0e2";
+}
+.elegant-icon_globe-2:before {
+	content: "\e0e3";
+}
+.elegant-icon_target:before {
+	content: "\e0f5";
+}
+.elegant-icon_hourglass:before {
+	content: "\e0e1";
+}
+.elegant-icon_balance:before {
+	content: "\e0ff";
+}
+.elegant-icon_rook:before {
+	content: "\e0f8";
+}
+.elegant-icon_printer-alt:before {
+	content: "\e0fa";
+}
+.elegant-icon_calculator_alt:before {
+	content: "\e0e7";
+}
+.elegant-icon_building_alt:before {
+	content: "\e0fd";
+}
+.elegant-icon_floppy_alt:before {
+	content: "\e0e4";
+}
+.elegant-icon_drive_alt:before {
+	content: "\e0e5";
+}
+.elegant-icon_search_alt:before {
+	content: "\e0f7";
+}
+.elegant-icon_id_alt:before {
+	content: "\e0e0";
+}
+.elegant-icon_id-2_alt:before {
+	content: "\e0fc";
+}
+.elegant-icon_puzzle_alt:before {
+	content: "\e0f9";
+}
+.elegant-icon_like_alt:before {
+	content: "\e0dd";
+}
+.elegant-icon_dislike_alt:before {
+	content: "\e0f1";
+}
+.elegant-icon_mug_alt:before {
+	content: "\e0dc";
+}
+.elegant-icon_currency_alt:before {
+	content: "\e0f3";
+}
+.elegant-icon_wallet_alt:before {
+	content: "\e0d8";
+}
+.elegant-icon_pens_alt:before {
+	content: "\e0db";
+}
+.elegant-icon_easel_alt:before {
+	content: "\e0f0";
+}
+.elegant-icon_flowchart_alt:before {
+	content: "\e0df";
+}
+.elegant-icon_datareport_alt:before {
+	content: "\e0f2";
+}
+.elegant-icon_briefcase_alt:before {
+	content: "\e0f4";
+}
+.elegant-icon_shield_alt:before {
+	content: "\e0d9";
+}
+.elegant-icon_percent_alt:before {
+	content: "\e0da";
+}
+.elegant-icon_globe_alt:before {
+	content: "\e0de";
+}
+.elegant-icon_clipboard:before {
+	content: "\e0e6";
+}

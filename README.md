@@ -1,0 +1,170 @@
+
+# Universal Icon Picker
+
+![Language: Vanilla JS](https://img.shields.io/badge/-vanilla%20js-555?logo=JavaScript)
+![Dependencies: none](https://img.shields.io/badge/dependencies-none-04B54E)
+![GitHub file size in bytes](https://img.shields.io/github/size/migliori/universal-icon-picker/assets/js/universal-icon-picker.min.js)
+[![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
+
+Nice small Javascript **Icon Picker for any icon library**
+
+*Vanilla Javascript* - *No dependency* - *2.6ko gzipped*
+
+Originally forked from [aesthetic-icon-picker](https://github.com/sh-sabbir/aesthetic-icon-picker/tree/20d6aa6134311b44891809cc852dbf247a029495)
+
+## Demo
+
+[https://universal-icon-picker.miglisoft.com](https://universal-icon-picker.miglisoft.com)
+
+## Features
+
+- Load any icon library from a single JSON file
+- Load the icon fonts stylesheets from local files or CDNs
+- Autoload the icon fonts (JSON + stylesheets) or load them only on request
+- Add as many icon libraries as you like to each instance of the plugin
+- Create multiple instances and triggers on the same page
+- Change the icon libraries attached to an instance whenever you want
+- Group icons of the same family by categories
+- Load one or more styles from the same icon family individually
+- Search / Filter icons
+- Built-in `onSelect()` and `onReset()` callback functions
+- Attach the Icon Picker to any HTML element
+- Add your favourite icon libraries very easily
+
+## Integrated icon libraries
+
+### Font Awesome
+
+- All
+- Solid
+- Regular
+- Brands
+
+### Material Icons
+
+- Filled
+- Outlined
+- Round
+- Sharp
+- Two-tone
+
+### Other icon libraries
+
+- Bootstrap Icons
+- Elegant Icons
+- Feather Icons
+- Foundation Icons
+- Happy Icons
+- Icomoon
+- Open-iconic
+- Tabler Icons
+- Weather Icons
+- Zondicons
+
+## Installation
+
+Clone / download or install with npm
+
+```bash
+  npm install universal-icon-picker
+```
+
+## Usage/Examples
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <button id="selector" title="Open the icon picker">Click to open</button>
+    <script src="universal-icon-picker/assets/js/universal-icon-picker.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function(event) {
+            var uip = new UniversalIconPicker('#selector', {options});
+        });
+    </script>
+
+</body>
+
+</html>
+```
+
+## Options
+
+| option | type | value |
+| ----------- | ---- | ------ |
+| iconLibraries | *Array* | Array of JSON icon libraries in `assets/icons-libraries`.<br />Default: `null` |
+| iconLibrariesCss | *Array* | Array of CSS icon libraries in `assets/stylesheets` or from any CDN.<br />Default: `null` |
+| mode | *String* | `'autoload'` or `'onrequest'`. Default: `'autoload'` |
+| onReset | *Function* | Callback function when the user clicks the `reset` button.<br />Default: `null` |
+| onSelect | *Function* | Callback function when the user clicks the `insert` button.<br />Default: `null` |
+| resetSelector | *String* | Selector for the HTML *reset* button on your page.<br />Default: `null` |
+
+### Example
+
+```javascript
+const options = {
+    iconLibraries: [
+        'happy-icons.min.json',
+        'font-awesome.min.json'
+    ],
+    iconLibrariesCss: [
+        'happy-icons.min.css',
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'
+    ],
+    resetSelector: '#uip-reset-btn',
+    onSelect: function(jsonIconData) {
+        document.getElementById('output-icon').innerHTML = jsonIconData.iconMarkup;
+
+        console.log(jsonIconData);
+        /* will output something like:
+        {
+            "libraryId": "fa-solid",
+            "libraryName": "fontAwesome",
+            "iconHtml": "<i class=\"fa-solid fa-oil-can\"></i>",
+            "iconMarkup": "&lt;i class=&quot;fa-solid fa-oil-can&quot;&gt;&lt;/i&gt;",
+            "iconClass": "fa-solid fa-oil-can",
+            "iconText": ""
+        }
+        */
+    },
+    onReset: function() {
+        document.getElementById('output-icon').innerHTML = '';
+    }
+}
+
+// Instanciate the Icon Picker
+var uip = new UniversalIconPicker('#selector', {options});
+```
+
+See the source code of the [demo](https://universal-icon-picker.miglisoft.com) for more examples
+
+## Screenshots
+
+![Universal Icon Picker Screenshot](https://universal-icon-picker.miglisoft.com/demo/assets/images/screenshot.png)
+
+## Contributing
+
+Contributions are always welcome!
+
+Please contact us for any improvement suggestions or send your pull requests
+
+## Changelog
+
+2022/02/23
+
+- First release
+
+## License
+
+[GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/)
+
+## Credits
+
+Thanks to Sabbir for his [Aesthetic Icon Picker](https://github.com/sh-sabbir/aesthetic-icon-picker/tree/20d6aa6134311b44891809cc852dbf247a029495), which gave me a clean & strong base code for this project.

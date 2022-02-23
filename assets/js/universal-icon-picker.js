@@ -1,0 +1,440 @@
+var iconPickerUrl = document.currentScript.src.replace(/js\/([a-z\.-]+)$/gm, '');
+var loadedDependencies = [];
+
+(function (root, factory) {
+    if (typeof define === 'function' && define.amd) {
+        define([], factory('UniversalIconPicker'));
+    } else if (typeof exports === 'object') {
+        module.exports = factory('UniversalIconPicker');
+    } else {
+        root['UniversalIconPicker'] = factory('UniversalIconPicker');
+    }
+}(this, function () {
+    'use strict';
+
+    var createDomEle = function (string) {
+        var ele = document.createElement('div');
+        ele.innerHTML = string;
+        return ele.firstChild;
+    }
+
+    var debounce = function (func, wait, immediate) {
+        var timeout;
+        return function () {
+            var context = this,
+                args = arguments;
+            var later = function () {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        };
+    };
+
+    var escapeHtml = function (text) {
+        var map = {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#039;'
+        };
+
+        return text.replace(/[&<>"']/g, function (m) { return map[m]; });
+    };
+
+    /**
+     * Merge defaults with user options
+     * @param {Object} defaults Default settings
+     * @param {Object} options User options
+     */
+    var extend = function (defaults, options) {
+        var prop, extended = {};
+        for (prop in defaults) {
+            if (Object.prototype.hasOwnProperty.call(defaults, prop)) {
+                extended[prop] = defaults[prop];
+            }
+        }
+        for (prop in options) {
+            if (Object.prototype.hasOwnProperty.call(options, prop)) {
+                extended[prop] = options[prop];
+            }
+        }
+
+        return extended;
+    };
+
+    var getLibraryName = function (string) {
+        return string.replace(/([A-Z])/g, ' $1');
+    }
+
+    /**
+     * Plugin Object
+     * @param selector The html selector to initialize
+     * @param {Object} options User options
+     * @constructor
+     */
+    function UniversalIconPicker (selector, options) {
+        this.selector = selector;
+
+        let defaults = {
+            iconLibraries: null,
+            iconLibrariesCss: null,
+            mode: 'autoload', // autoload | onrequest
+            onReset: null,
+            onSelect: null,
+            resetSelector: null
+        };
+        this.options = extend(defaults, options);
+
+        this.activeLibraryId = '';
+        this.filterIcon = '';
+        this.iconLibraries = {};
+        this.iconMarkup = '';
+        this.iconWrap = '';
+        this.idSuffix = '-' + this.selector.replace('#', '');
+        this.loaded = false;
+        this.sideBarBtn = '';
+        this.sideBarList = [];
+
+        this.universalWrap = '<div class="uip-modal uip-open" id="uip-modal' + this.idSuffix + '"><div class="uip-modal--content"><div class="uip-modal--header"><div class="uip-modal--header-logo-area"><span class="uip-modal--header-logo-title">Universal Icon Picker</span></div><div class="uip-modal--header-close-btn"><img src="' + iconPickerUrl + '/images/xmark-solid.svg" width="20" height="16" alt="Close" title="Close" /></div></div><div class="uip-modal--body"><div id="uip-modal--sidebar' + this.idSuffix + '" class="uip-modal--sidebar"><div class="uip-modal--sidebar-tabs"></div></div><div id="uip-modal--icon-preview-wrap' + this.idSuffix + '" class="uip-modal--icon-preview-wrap"><div class="uip-modal--icon-search"><input name="" value="" placeholder="Filter by name..."><img src="' + iconPickerUrl + '/images/magnifying-glass-solid.svg" width="20" height="16" alt="Search" title="Search" /></div><div class="uip-modal--icon-preview-inner"><div id="uip-modal--icon-preview' + this.idSuffix + '" class="uip-modal--icon-preview"></div></div></div></div><div class="uip-modal--footer"><button class="uip-insert-icon-button">Insert</button></div></div></div>';
+
+        this.universalDomEle = createDomEle(this.universalWrap);
+        this.sidebarTabs = this.universalDomEle.querySelector('.uip-modal--sidebar-tabs');
+        this.previewWrap = this.universalDomEle.querySelector('#uip-modal--icon-preview' + this.idSuffix);
+        this.searchInput = this.universalDomEle.querySelector('.uip-modal--icon-search input');
+        if (this.options.mode === 'autoload') {
+            this.init();
+        } else {
+            document.querySelector(this.selector).addEventListener('click', this.init.bind(this), { once: true });
+        }
+    }
+
+
+    // Plugin prototype
+    UniversalIconPicker.prototype = {
+
+        /* Public functions
+        -------------------------------------------------- */
+
+        init: function () {
+            this._loadCssFiles();
+            this._loadIconLibraries().then(() => {
+                this.loaded = true;
+                if (this.options.mode !== 'autoload') {
+                    this.open();
+                }
+                document.querySelector(this.selector).addEventListener('click', () => {
+                    this.open();
+                });
+
+                //Remove selected icon
+                if (this.options.resetSelector) {
+                    document.querySelector(this.options.resetSelector).addEventListener('click', this.options.onReset);
+                }
+            });
+        },
+
+        open: function () {
+            if (!document.getElementById('uip-modal' + this.idSuffix)) {
+                //push universal dom to body
+                document.body.appendChild(this.universalDomEle);
+
+                //Icon library close by clicking close button
+                this.universalDomEle.querySelector('.uip-modal--header-close-btn').addEventListener('click', () => {
+                    this.universalDomEle.classList.add('uip-close');
+                    this.universalDomEle.classList.remove('uip-open');
+                });
+
+                // selected icon highlited by adding class
+                this.universalDomEle.querySelectorAll('.uip-icon-item').forEach((item) => {
+                    item.addEventListener('click', (evt) => {
+                        this.iconWrap.forEach((el) => {
+                            el.classList.remove('universal-selected');
+                        });
+                        evt.currentTarget.classList.toggle('universal-selected');
+                    });
+                });
+
+                //Insert button
+                this.universalDomEle.querySelector('.uip-insert-icon-button').addEventListener('click', () => {
+                    let selected = this.universalDomEle.querySelector('.universal-selected');
+
+                    if (selected) {
+                        let iconHtml = selected.querySelector('i').outerHTML;
+                        let jsonOutput = {
+                            'libraryId': selected.dataset.libraryId,
+                            'libraryName': selected.dataset.libraryName,
+                            'iconHtml': iconHtml,
+                            'iconMarkup': escapeHtml(iconHtml),
+                            'iconClass': selected.querySelector('i').classList.value,
+                            'iconText': selected.querySelector('i').innerText
+                        }
+                        this.options.onSelect(jsonOutput);
+                    }
+                    this.universalDomEle.classList.add('uip-close');
+                    this.universalDomEle.classList.remove('uip-open');
+                });
+            } else {
+                //Icon library open if dom element exist
+                this.universalDomEle.classList.remove('uip-close');
+                this.universalDomEle.classList.add('uip-open');
+            }
+
+            this.universalDomEle.querySelector('.uip-modal--icon-search input').focus();
+        },
+
+        setOptions: function (opts) {
+            this.options = extend(this.options, opts);
+            if (opts.iconLibrariesCss) {
+                this._loadCssFiles();
+            }
+            if (opts.iconLibraries) {
+                this._resetIconAndSidebarList().then(() => {
+                    // if the icon picker is not yet loaded it'll load the icon libraries on init.
+                    if (this.loaded) {
+                        this._loadIconLibraries();
+                    }
+                });
+            }
+        },
+
+        /* Private functions
+        -------------------------------------------------- */
+
+        _clickHandlerFunc: function (e) {
+            if (!e.currentTarget.classList.contains('universal-active')) {
+                this.sideBarBtn.forEach(function (item) {
+                    item.classList.remove('universal-active');
+                });
+                e.currentTarget.classList.add('universal-active')
+            }
+            this._sidebarFilterFunc(e.currentTarget.dataset['libraryId']);
+        },
+
+        _iconItemMarkup: function (libraryName, libraryItem) {
+            var markup = '',
+                library = libraryItem['icon-style'],
+                prefix = libraryItem['prefix'];
+            if (prefix.match(/^material-icons/)) {
+                libraryItem['icons'].forEach(function (item) {
+                    markup += '<div class="uip-icon-item" data-library-id="' + library + '" data-filter="' + item + '"data-library-name="' + libraryName + '"><div class="uip-icon-item-inner"><i class="' + prefix + '">' + item + '</i><div class="uip-icon-item-name" title="' + item + '">' + item.replace("-", " ") + '</div></div></div>';
+                });
+            } else {
+                libraryItem['icons'].forEach(function (item) {
+                    markup += '<div class="uip-icon-item" data-library-id="' + library + '" data-filter="' + item + '"data-library-name="' + libraryName + '"><div class="uip-icon-item-inner"><i class="' + [prefix, item].join('') + '"></i><div class="uip-icon-item-name" title="' + item + '">' + item.replace("-", " ") + '</div></div></div>';
+                });
+            }
+
+            return markup;
+        },
+
+        _iconItemPush: function (arrayList) {
+            this.previewWrap.innerHTML = '';
+            arrayList.forEach((item) => {
+                this.previewWrap.appendChild(item[1]);
+            });
+        },
+
+        _loadCssFiles: function () {
+            let link = document.createElement('link');
+            if (!loadedDependencies.includes('universal-icon-picker.min.css')) {
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = iconPickerUrl + 'stylesheets/universal-icon-picker.min.css';
+                link.media = 'screen';
+                document.head.appendChild(link);
+                loadedDependencies.push('universal-icon-picker.min.css');
+            }
+            if (this.options.iconLibrariesCss) {
+                this.options.iconLibrariesCss.forEach(cssFile => {
+                    if (!loadedDependencies.includes(cssFile)) {
+                        let cssFileLink = iconPickerUrl + 'stylesheets/' + cssFile;
+                        if (cssFile.match(/^http/)) {
+                            cssFileLink = cssFile;
+                        }
+                        link = document.createElement('link');
+                        link.rel = 'stylesheet';
+                        link.type = 'text/css';
+                        link.href = cssFileLink;
+                        link.media = 'screen';
+                        document.head.appendChild(link);
+                        loadedDependencies.push(cssFile);
+                    }
+                });
+            }
+        },
+
+        _loadIconLibraries: async function (i = 0) {
+            if (!this.options.iconLibraries) {
+                console.error('Universal icon picker - no icon library loaded');
+                return false;
+            }
+            if (i === 0 && this.options.iconLibraries.length > 1) {
+                this.sideBarList.push({
+                    "title": "all icons",
+                    "list-icon": "",
+                    "library-id": "all",
+                    "prefix": ""
+                });
+            }
+
+            let iconLib = this.options.iconLibraries[i];
+
+            await fetch(iconPickerUrl + 'icons-libraries/' + iconLib)
+                .then(response => response.json())
+                .then(data => {
+                    // Success!
+                    var camelCasedIconLibrary = iconLib.replace(/-([a-z])/g, function (g) { return g[1].toUpperCase(); }).replace(/\.[a-z.]+$/, '');
+                    let newLibrary = {};
+                    newLibrary[camelCasedIconLibrary] = data;
+                    Object.assign(this.iconLibraries, newLibrary);  // new icon library merge
+                    // console.log(iconLibraries);
+                    if (i + 1 === this.options.iconLibraries.length) {
+                        //set icon and sidebar list
+                        this._setIconAndSidebarList();
+
+                        this.activeLibraryId = this.sideBarList[0]['library-id'];
+
+                        //sidebar list markup push
+                        this.sidebarTabs.innerHTML = this._sideBarListMarkup(this.sideBarList);
+
+                        //icon markup push
+                        this.previewWrap.innerHTML = this.iconMarkup;
+
+                        // get all icon wrapper dom element
+                        this.iconWrap = this.previewWrap.querySelectorAll('.uip-icon-item');
+
+                        //set event lisner to search input
+                        this.searchInput.addEventListener('keyup', debounce(this._searchFunc, 100).bind(this), false);
+
+                        //get all sidebar list item wrapper dom element
+                        this.sideBarBtn = this.sidebarTabs.querySelectorAll('.uip-modal--sidebar-tab-item');
+
+                        //set click event lisner to sidebar list item
+                        this.sideBarBtn.forEach((item) => {
+                            item.addEventListener('click', this._clickHandlerFunc.bind(this), false);
+                        });
+
+                        return true;
+                    } else {
+                        return this._loadIconLibraries(i + 1);
+                    }
+                }).catch((error) => {
+                    console.log(error);
+                    return error;
+                });
+        },
+
+        _resetIconAndSidebarList: async function () {
+            this.sideBarList = [];
+            this.iconMarkup = '';
+            this.iconLibraries = {};
+            this.iconWrap = '';
+            this.filterIcon = '';
+            this.sideBarBtn = '';
+            this.activeLibraryId = '';
+
+            return;
+        },
+
+        _searchFunc: function (e) {
+            // console.log(this.value.toLowerCase());
+
+            var searchText = e.target.value.toLowerCase();
+            this._searchFilterFunc(searchText, 'filter');
+
+        },
+
+        _searchFilterFunc: function (filterText, dataName) {
+            this.filterIcon = Object.entries(this.iconWrap).filter((item) => {
+                if (-1 == item[1].dataset[dataName].indexOf(filterText) || (this.activeLibraryId !== 'all' && item[1].dataset['libraryId'] !== this.activeLibraryId)) {
+                    return false;
+                }
+                return true;
+            });
+
+            this._iconItemPush(this.filterIcon);
+
+        },
+
+        _setIconAndSidebarList: function () {
+            for (const [libraryName, libraryContent] of Object.entries(this.iconLibraries)) {
+                this._setSideBarList(getLibraryName(libraryName), libraryContent);
+                this._setIconMarkup(libraryName, libraryContent);
+            }
+        },
+
+        _setIconMarkup: function (libraryName, libraryContent) {
+            if (libraryContent.icons !== undefined) {
+                this.iconMarkup += this._iconItemMarkup(libraryName, libraryContent)
+            } else {
+                Object.entries(libraryContent).forEach((item) => {
+                    this.iconMarkup += this._iconItemMarkup(libraryName, item[1])
+                });
+            }
+        },
+
+        _sidebarFilterFunc: function (filterText) {
+            this.activeLibraryId = filterText;
+            this.filterIcon = Object.entries(this.iconWrap).filter(function (item) {
+                if ('all' === filterText || filterText === item[1].dataset['libraryId']) {
+                    return true;
+                }
+                return false;
+            });
+
+            this._iconItemPush(this.filterIcon);
+
+        },
+
+        _setSideBarList: function (libraryName, libraryContent) {
+            var listItem;
+            if (libraryContent.icons !== undefined) {
+                listItem = {
+                    'title': libraryName,
+                    'prefix': libraryContent['prefix'] !== undefined ? libraryContent['prefix'] : '',
+                    'list-icon': libraryContent['list-icon'] !== undefined ? libraryContent['list-icon'] : '',
+                    'library-id': libraryContent['icon-style'] !== undefined ? libraryContent['icon-style'] : 'all',
+                };
+                this.sideBarList.push(listItem);
+            } else {
+                Object.entries(libraryContent).forEach(item => {
+                    listItem = {
+                        "title": libraryName + ' - ' + item[0],
+                        "prefix": item[1]['prefix'] !== undefined ? item[1]['prefix'] : '',
+                        "list-icon": item[1]['list-icon'] !== undefined ? item[1]['list-icon'] : "",
+                        "library-id": item[1]['icon-style'] !== undefined ? item[1]['icon-style'] : "all",
+                    };
+                    this.sideBarList.push(listItem)
+                });
+            }
+        },
+
+        _sideBarListMarkup: function (sideBarList) {
+            var markup = '';
+            sideBarList.forEach((item) => {
+                let activeClazz = '';
+                if (item['library-id'] === this.activeLibraryId) {
+                    activeClazz = ' universal-active';
+                }
+                if ('all' !== item['library-id']) {
+                    let iconTag = '<i class="' + item['list-icon'] + '"></i>';
+                    if (item['prefix'].match(/^material-icons/)) {
+                        iconTag = '<i class="' + item['prefix'] + '">' + item['list-icon'] + '</i>';
+                    }
+                    markup += '<div class="uip-modal--sidebar-tab-item' + activeClazz + '" data-library-id="' + item['library-id'] + '">' + iconTag + item['title'] + '</div>';
+                } else {
+                    markup += '<div class="uip-modal--sidebar-tab-item' + activeClazz + '" data-library-id="' + item['library-id'] + '"><img src="' + iconPickerUrl + '/images/star-of-life-solid.svg" width="13.125px" height="auto" alt="All" title="All" />' + item['title'] + '</div>';
+                }
+            });
+
+            return markup;
+        }
+    };
+
+    return UniversalIconPicker;
+}));
