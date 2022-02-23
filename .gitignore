@@ -2,3 +2,4 @@
 SOURCES
 prepros.config
 .vscode
+.npmrc
