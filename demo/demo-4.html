@@ -31,7 +31,7 @@
         <div id="icon-library-select-wrapper">
             <select name="icon-library-select">
                 <optgroup label="Font Awesome">
-                    <option value="font-awesome" data-css="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" selected>Font Awesome (all)</option>
+                    <option value="font-awesome" data-css="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" selected="selected">Font Awesome (all)</option>
                     <option value="font-awesome-solid" data-css="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">Font Awesome Solid</option>
                     <option value="font-awesome-regular" data-css="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">Font Awesome Regular</option>
                     <option value="font-awesome-brands" data-css="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">Font Awesome Brands</option>
@@ -106,6 +106,8 @@
                     iconLibrariesCss: [currentIconLibraryCss]
                 });
             });
+            const evt = new Event('change');
+            $selectElement.dispatchEvent(evt);
         });
     </script>
 </body>

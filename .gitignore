@@ -3,3 +3,10 @@ SOURCES
 prepros.config
 .vscode
 .npmrc
+apple-touch-icon.png
+browserconfig.xml
+favicon-16x16.png
+favicon-32x32.png
+favicon.ico
+mstile-150x150.png
+safari-pinned-tab.svg
