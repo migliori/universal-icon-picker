@@ -86,7 +86,7 @@ Clone / download or install with npm
 
     <script>
         document.addEventListener('DOMContentLoaded', function(event) {
-            var uip = new UniversalIconPicker('#selector', {options});
+            var uip = new UniversalIconPicker('#selector', options);
         });
     </script>
 
@@ -140,10 +140,33 @@ const options = {
 }
 
 // Instanciate the Icon Picker
-var uip = new UniversalIconPicker('#selector', {options});
+var uip = new UniversalIconPicker('#selector', options);
 ```
 
 See the source code of the [demo](https://universal-icon-picker.miglisoft.com) for more examples
+
+## Public methods
+
+- ### setOptions(options)
+
+  Update the *options* of an Icon Picker instance
+
+  Example:
+
+  ```javascript
+    // Instanciate the Icon Picker
+
+  var uip = new UniversalIconPicker('#selector', options);
+
+  // later, change the icon libraries
+  uip.setOptions({
+      iconLibraries: ['weather-icons.min.json'],
+      iconLibrariesCss: ['weather-icons.min.css']
+  });
+
+  ```
+
+  Live demo: [https://universal-icon-picker.miglisoft.com/demo/demo-4.html](https://universal-icon-picker.miglisoft.com/demo/demo-4.html)
 
 ## Screenshots
 
@@ -160,6 +183,8 @@ Please contact us for any improvement suggestions or send your pull requests
 2022/02/23
 
 - First release
+- fix icon selections when changing the icon library programatically with setOptions()
+- update README
 
 ## License
 

@@ -88,7 +88,7 @@
                 mode: 'onrequest',
                 onSelect: function(jsonIconData) {
                     document.getElementById('output-json').innerHTML = JSON.stringify(jsonIconData, null, 4);
-                    document.getElementById('output-icon').innerHTML = jsonIconData.iconMarkup;
+                    document.getElementById('output-icon').innerHTML = jsonIconData.iconHtml;
                     document.getElementById('output').classList.remove('hidden');
                 },
                 onReset: function() {

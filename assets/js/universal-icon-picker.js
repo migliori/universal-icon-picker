@@ -92,6 +92,7 @@ var loadedDependencies = [];
 
         this.activeLibraryId = '';
         this.filterIcon = '';
+        this.iconEventsLoaded = false;
         this.iconLibraries = {};
         this.iconMarkup = '';
         this.iconWrap = '';
@@ -149,16 +150,6 @@ var loadedDependencies = [];
                     this.universalDomEle.classList.remove('uip-open');
                 });
 
-                // selected icon highlited by adding class
-                this.universalDomEle.querySelectorAll('.uip-icon-item').forEach((item) => {
-                    item.addEventListener('click', (evt) => {
-                        this.iconWrap.forEach((el) => {
-                            el.classList.remove('universal-selected');
-                        });
-                        evt.currentTarget.classList.toggle('universal-selected');
-                    });
-                });
-
                 //Insert button
                 this.universalDomEle.querySelector('.uip-insert-icon-button').addEventListener('click', () => {
                     let selected = this.universalDomEle.querySelector('.universal-selected');
@@ -184,6 +175,19 @@ var loadedDependencies = [];
                 this.universalDomEle.classList.add('uip-open');
             }
 
+            if (!this.iconEventsLoaded) {
+                // selected icon highlited by adding class
+                this.universalDomEle.querySelectorAll('.uip-icon-item').forEach((item) => {
+                    item.addEventListener('click', (evt) => {
+                        this.iconWrap.forEach((el) => {
+                            el.classList.remove('universal-selected');
+                        });
+                        evt.currentTarget.classList.toggle('universal-selected');
+                    });
+                });
+                this.iconEventsLoaded = true;
+            }
+
             this.universalDomEle.querySelector('.uip-modal--icon-search input').focus();
         },
 
@@ -193,6 +197,8 @@ var loadedDependencies = [];
                 this._loadCssFiles();
             }
             if (opts.iconLibraries) {
+                // dom icon events need to be reloaded
+                this.iconEventsLoaded = false;
                 this._resetIconAndSidebarList().then(() => {
                     // if the icon picker is not yet loaded it'll load the icon libraries on init.
                     if (this.loaded) {
@@ -292,7 +298,6 @@ var loadedDependencies = [];
                     let newLibrary = {};
                     newLibrary[camelCasedIconLibrary] = data;
                     Object.assign(this.iconLibraries, newLibrary);  // new icon library merge
-                    // console.log(iconLibraries);
                     if (i + 1 === this.options.iconLibraries.length) {
                         //set icon and sidebar list
                         this._setIconAndSidebarList();
