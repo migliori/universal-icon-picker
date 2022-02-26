@@ -13,6 +13,12 @@ $uip-success-color: #42d6a0;
     display: flex;
     align-items: center;
 
+    *,
+    :before,
+    :after {
+        box-sizing: border-box;
+    }
+
     &.uip-close {
         opacity: 0;
         visibility: hidden;
@@ -85,7 +91,7 @@ $uip-success-color: #42d6a0;
                 .uip-modal--sidebar-tabs {
                     margin-top: 30px;
                     .uip-modal--sidebar-tab-item {
-                        padding: 15px 0 15px 45px;
+                        padding: 15px;
                         font-size: 14px;
                         color: #6d7882;
                         text-align: left;
@@ -188,7 +194,7 @@ $uip-success-color: #42d6a0;
                                 .uip-icon-item-name {
                                     color: #c2cbd2;
                                     font-size: 11px;
-                                    padding: 13px 20px 0;
+                                    padding: 13px 0 0;
                                     max-width: 100%;
                                     white-space: nowrap;
                                     -o-text-overflow: ellipsis;
@@ -205,7 +211,7 @@ $uip-success-color: #42d6a0;
                 .uip-modal--icon-search {
                     position: relative;
                     input {
-                        width: calc(100% - 30px);
+                        width: calc(100% - 15px);
                         padding: 8px 15px;
                         background-color: #fff;
                         border: none;
@@ -219,7 +225,7 @@ $uip-success-color: #42d6a0;
                         -webkit-transform: translateY(-50%);
                         -ms-transform: translateY(-50%);
                         transform: translateY(-50%);
-                        right: 15px;
+                        right: 25px;
                     }
                 }
             }

@@ -18,6 +18,12 @@
           align-items: center;
   /* Footer */
 }
+.uip-modal *,
+.uip-modal :before,
+.uip-modal :after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
 .uip-modal.uip-close {
   opacity: 0;
   visibility: hidden;
@@ -101,7 +107,7 @@
   margin-top: 30px;
 }
 .uip-modal .uip-modal--content .uip-modal--body .uip-modal--sidebar .uip-modal--sidebar-tabs .uip-modal--sidebar-tab-item {
-  padding: 15px 0 15px 45px;
+  padding: 15px;
   font-size: 14px;
   color: #6d7882;
   text-align: left;
@@ -207,7 +213,7 @@
 .uip-modal .uip-modal--content .uip-modal--body .uip-modal--icon-preview-wrap .uip-modal--icon-preview-inner .uip-modal--icon-preview .uip-icon-item .uip-icon-item-inner .uip-icon-item-name {
   color: #c2cbd2;
   font-size: 11px;
-  padding: 13px 20px 0;
+  padding: 13px 0 0;
   max-width: 100%;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -218,7 +224,7 @@
   position: relative;
 }
 .uip-modal .uip-modal--content .uip-modal--body .uip-modal--icon-preview-wrap .uip-modal--icon-search input {
-  width: calc(100% - 30px);
+  width: calc(100% - 15px);
   padding: 8px 15px;
   background-color: #fff;
   border: none;
@@ -243,7 +249,7 @@
   top: 50%;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
-  right: 15px;
+  right: 25px;
 }
 .uip-modal .uip-modal--footer {
   border-top: 1px solid #e6e9ec;
