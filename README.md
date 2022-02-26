@@ -99,6 +99,7 @@ Clone / download or install with npm
 
 | option | type | value |
 | ----------- | ---- | ------ |
+| allowEmpty | *Boolean* | Add an empty icon selector in the beginning of each icon list.<br />Default: true |
 | iconLibraries | *Array* | Array of JSON icon libraries in `assets/icons-libraries`.<br />Default: `null` |
 | iconLibrariesCss | *Array* | Array of CSS icon libraries in `assets/stylesheets` or from any CDN.<br />Default: `null` |
 | mode | *String* | `'autoload'` or `'onrequest'`. Default: `'autoload'` |

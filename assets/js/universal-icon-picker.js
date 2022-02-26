@@ -81,6 +81,7 @@ var loadedDependencies = [];
         this.selector = selector;
 
         let defaults = {
+            allowEmpty: true,
             iconLibraries: null,
             iconLibrariesCss: null,
             mode: 'autoload', // autoload | onrequest
@@ -163,11 +164,18 @@ var loadedDependencies = [];
                             let jsonOutput = {
                                 'libraryId': selected.dataset.libraryId,
                                 'libraryName': selected.dataset.libraryName,
-                                'iconHtml': iconHtml,
-                                'iconMarkup': escapeHtml(iconHtml),
-                                'iconClass': selected.querySelector('i').classList.value,
-                                'iconText': selected.querySelector('i').innerText
+                                'iconHtml': null,
+                                'iconMarkup': null,
+                                'iconClass': null,
+                                'iconText': null
+                            };
+                            if (!selected.querySelector('i').classList.value.match('uip-icon-none')) {
+                                jsonOutput.iconHtml = iconHtml;
+                                jsonOutput.iconMarkup = escapeHtml(iconHtml);
+                                jsonOutput.iconClass = selected.querySelector('i').classList.value;
+                                jsonOutput.iconText = selected.querySelector('i').innerText;
                             }
+
                             this.options.onSelect(jsonOutput);
                         }
                         this.universalDomEle.classList.add('uip-close');
@@ -226,13 +234,16 @@ var loadedDependencies = [];
             var markup = '',
                 library = libraryItem['icon-style'],
                 prefix = libraryItem['prefix'];
+            if (this.options.allowEmpty) {
+                markup += '<div class="uip-icon-item" data-library-id="' + library + '" data-filter="" data-library-name="' + libraryName + '"><div class="uip-icon-item-inner"><i class="' + prefix + ' uip-icon-none">&nbsp;</i><div class="uip-icon-item-name" title="None">None</div></div></div>';
+            }
             if (prefix.match(/^material-icons/)) {
                 libraryItem['icons'].forEach(function (item) {
-                    markup += '<div class="uip-icon-item" data-library-id="' + library + '" data-filter="' + item + '"data-library-name="' + libraryName + '"><div class="uip-icon-item-inner"><i class="' + prefix + '">' + item + '</i><div class="uip-icon-item-name" title="' + item + '">' + item.replace("-", " ") + '</div></div></div>';
+                    markup += '<div class="uip-icon-item" data-library-id="' + library + '" data-filter="' + item + '" data-library-name="' + libraryName + '"><div class="uip-icon-item-inner"><i class="' + prefix + '">' + item + '</i><div class="uip-icon-item-name" title="' + item + '">' + item.replace("-", " ") + '</div></div></div>';
                 });
             } else {
                 libraryItem['icons'].forEach(function (item) {
-                    markup += '<div class="uip-icon-item" data-library-id="' + library + '" data-filter="' + item + '"data-library-name="' + libraryName + '"><div class="uip-icon-item-inner"><i class="' + [prefix, item].join('') + '"></i><div class="uip-icon-item-name" title="' + item + '">' + item.replace("-", " ") + '</div></div></div>';
+                    markup += '<div class="uip-icon-item" data-library-id="' + library + '" data-filter="' + item + '" data-library-name="' + libraryName + '"><div class="uip-icon-item-inner"><i class="' + [prefix, item].join('') + '"></i><div class="uip-icon-item-name" title="' + item + '">' + item.replace("-", " ") + '</div></div></div>';
                 });
             }
 
