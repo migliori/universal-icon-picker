@@ -186,6 +186,13 @@ Please contact us for any improvement suggestions or send your pull requests
 - fix icon selections when changing the icon library programatically with setOptions()
 - update README
 
+2022/02/26
+
+- detect absolute css urls starting without protocol ; ie: '//domain.com/my-font.css'
+- allow more complex trigger button selectors ; ie: '#div button["name=iconpicker-opener"]'
+- add the "onBeforeOpen" option
+- add the "onBeforeOpen" demo (demo 5)
+
 ## License
 
 [GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/)

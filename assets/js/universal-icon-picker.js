@@ -84,6 +84,7 @@ var loadedDependencies = [];
             iconLibraries: null,
             iconLibrariesCss: null,
             mode: 'autoload', // autoload | onrequest
+            onBeforeOpen: null,
             onReset: null,
             onSelect: null,
             resetSelector: null
@@ -94,10 +95,10 @@ var loadedDependencies = [];
         this.filterIcon = '';
         this.iconEventsLoaded = false;
         this.iconLibraries = {};
+        this.iconLibrariesLoaded = false;
         this.iconMarkup = '';
         this.iconWrap = '';
-        this.idSuffix = '-' + this.selector.replace('#', '');
-        this.loaded = false;
+        this.idSuffix = '-' + this.selector.replace(/[#\s[\]="]/g, '');
         this.sideBarBtn = '';
         this.sideBarList = [];
 
@@ -123,72 +124,76 @@ var loadedDependencies = [];
 
         init: function () {
             this._loadCssFiles();
-            this._loadIconLibraries().then(() => {
-                this.loaded = true;
-                if (this.options.mode !== 'autoload') {
-                    this.open();
-                }
-                document.querySelector(this.selector).addEventListener('click', () => {
+            if (this.options.mode !== 'autoload') {
+                this._onBeforeOpen().then(() => {
                     this.open();
                 });
-
-                //Remove selected icon
-                if (this.options.resetSelector) {
-                    document.querySelector(this.options.resetSelector).addEventListener('click', this.options.onReset);
-                }
+            }
+            document.querySelector(this.selector).addEventListener('click', () => {
+                this._onBeforeOpen().then(() => {
+                    this.open();
+                });
             });
+
+            //Remove selected icon
+            if (this.options.resetSelector) {
+                document.querySelector(this.options.resetSelector).addEventListener('click', this.options.onReset);
+            }
         },
 
         open: function () {
-            if (!document.getElementById('uip-modal' + this.idSuffix)) {
-                //push universal dom to body
-                document.body.appendChild(this.universalDomEle);
+            this._loadIconLibraries().then(() => {
+                this.iconLibrariesLoaded = true;
+                if (!document.getElementById('uip-modal' + this.idSuffix)) {
+                    //push universal dom to body
+                    document.body.appendChild(this.universalDomEle);
 
-                //Icon library close by clicking close button
-                this.universalDomEle.querySelector('.uip-modal--header-close-btn').addEventListener('click', () => {
-                    this.universalDomEle.classList.add('uip-close');
-                    this.universalDomEle.classList.remove('uip-open');
-                });
-
-                //Insert button
-                this.universalDomEle.querySelector('.uip-insert-icon-button').addEventListener('click', () => {
-                    let selected = this.universalDomEle.querySelector('.universal-selected');
-
-                    if (selected) {
-                        let iconHtml = selected.querySelector('i').outerHTML;
-                        let jsonOutput = {
-                            'libraryId': selected.dataset.libraryId,
-                            'libraryName': selected.dataset.libraryName,
-                            'iconHtml': iconHtml,
-                            'iconMarkup': escapeHtml(iconHtml),
-                            'iconClass': selected.querySelector('i').classList.value,
-                            'iconText': selected.querySelector('i').innerText
-                        }
-                        this.options.onSelect(jsonOutput);
-                    }
-                    this.universalDomEle.classList.add('uip-close');
-                    this.universalDomEle.classList.remove('uip-open');
-                });
-            } else {
-                //Icon library open if dom element exist
-                this.universalDomEle.classList.remove('uip-close');
-                this.universalDomEle.classList.add('uip-open');
-            }
-
-            if (!this.iconEventsLoaded) {
-                // selected icon highlited by adding class
-                this.universalDomEle.querySelectorAll('.uip-icon-item').forEach((item) => {
-                    item.addEventListener('click', (evt) => {
-                        this.iconWrap.forEach((el) => {
-                            el.classList.remove('universal-selected');
-                        });
-                        evt.currentTarget.classList.toggle('universal-selected');
+                    //Icon library close by clicking close button
+                    this.universalDomEle.querySelector('.uip-modal--header-close-btn').addEventListener('click', () => {
+                        this.universalDomEle.classList.add('uip-close');
+                        this.universalDomEle.classList.remove('uip-open');
                     });
-                });
-                this.iconEventsLoaded = true;
-            }
 
-            this.universalDomEle.querySelector('.uip-modal--icon-search input').focus();
+                    //Insert button
+                    this.universalDomEle.querySelector('.uip-insert-icon-button').addEventListener('click', () => {
+                        let selected = this.universalDomEle.querySelector('.universal-selected');
+
+                        if (selected) {
+                            let iconHtml = selected.querySelector('i').outerHTML;
+                            let jsonOutput = {
+                                'libraryId': selected.dataset.libraryId,
+                                'libraryName': selected.dataset.libraryName,
+                                'iconHtml': iconHtml,
+                                'iconMarkup': escapeHtml(iconHtml),
+                                'iconClass': selected.querySelector('i').classList.value,
+                                'iconText': selected.querySelector('i').innerText
+                            }
+                            this.options.onSelect(jsonOutput);
+                        }
+                        this.universalDomEle.classList.add('uip-close');
+                        this.universalDomEle.classList.remove('uip-open');
+                    });
+                } else {
+                    //Icon library open if dom element exist
+                    this.universalDomEle.classList.remove('uip-close');
+                    this.universalDomEle.classList.add('uip-open');
+                }
+
+                if (!this.iconEventsLoaded) {
+                    // selected icon highlited by adding class
+                    this.universalDomEle.querySelectorAll('.uip-icon-item').forEach((item) => {
+                        item.addEventListener('click', (evt) => {
+                            this.iconWrap.forEach((el) => {
+                                el.classList.remove('universal-selected');
+                            });
+                            evt.currentTarget.classList.toggle('universal-selected');
+                        });
+                    });
+                    this.iconEventsLoaded = true;
+                }
+
+                this.universalDomEle.querySelector('.uip-modal--icon-search input').focus();
+            });
         },
 
         setOptions: function (opts) {
@@ -199,12 +204,8 @@ var loadedDependencies = [];
             if (opts.iconLibraries) {
                 // dom icon events need to be reloaded
                 this.iconEventsLoaded = false;
-                this._resetIconAndSidebarList().then(() => {
-                    // if the icon picker is not yet loaded it'll load the icon libraries on init.
-                    if (this.loaded) {
-                        this._loadIconLibraries();
-                    }
-                });
+                this.iconLibrariesLoaded = false;
+                this._resetIconAndSidebarList();
             }
         },
 
@@ -259,7 +260,7 @@ var loadedDependencies = [];
                 this.options.iconLibrariesCss.forEach(cssFile => {
                     if (!loadedDependencies.includes(cssFile)) {
                         let cssFileLink = iconPickerUrl + 'stylesheets/' + cssFile;
-                        if (cssFile.match(/^http/)) {
+                        if (cssFile.match(/^http|^\/\//)) {
                             cssFileLink = cssFile;
                         }
                         link = document.createElement('link');
@@ -278,6 +279,9 @@ var loadedDependencies = [];
             if (!this.options.iconLibraries) {
                 console.error('Universal icon picker - no icon library loaded');
                 return false;
+            }
+            if (this.iconLibrariesLoaded) {
+                return true;
             }
             if (i === 0 && this.options.iconLibraries.length > 1) {
                 this.sideBarList.push({
@@ -334,7 +338,13 @@ var loadedDependencies = [];
                 });
         },
 
-        _resetIconAndSidebarList: async function () {
+        _onBeforeOpen: async function () {
+            if (typeof (this.options.onBeforeOpen) === 'function') {
+                return this.options.onBeforeOpen();
+            }
+        },
+
+        _resetIconAndSidebarList: function () {
             this.sideBarList = [];
             this.iconMarkup = '';
             this.iconLibraries = {};
@@ -342,8 +352,6 @@ var loadedDependencies = [];
             this.filterIcon = '';
             this.sideBarBtn = '';
             this.activeLibraryId = '';
-
-            return;
         },
 
         _searchFunc: function (e) {

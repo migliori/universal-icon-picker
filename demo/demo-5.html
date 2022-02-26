@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Universal icon picker - demo 1</title>
+    <title>Universal icon picker - demo 5</title>
     <link rel="stylesheet" href="../demo/assets/stylesheets/demo-styles.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +14,7 @@
 
 <body>
 
-    <h1>Universal icon picker - demo 1</h1>
+    <h1>Universal icon picker - demo 5</h1>
 
     <p class="text-center"><a id="view-on-github-btn" class="demo-btn demo-border-light" href="https://github.com/migliori/universal-icon-picker">View on Github <img src="/demo/assets/images/github.svg" width="24px" height="24px" alt="View on Github"></a></p>
 
@@ -24,17 +24,17 @@
     <div class="container">
         <nav class="demo-nav d-flex justify-content-around">
             <a class="demo-btn" href="/"><img src="/demo/assets/images/home.svg" alt="home" width="16px" height="14px"></a>
-            <a class="demo-btn active" href="#">Demo 1</a>
+            <a class="demo-btn" href="/demo/demo-1.html">Demo 1</a>
             <a class="demo-btn" href="/demo/demo-2.html">Demo 2</a>
             <a class="demo-btn" href="/demo/demo-3.html">Demo 3</a>
             <a class="demo-btn" href="/demo/demo-4.html">Demo 4</a>
-            <a class="demo-btn" href="/demo/demo-5.html">Demo 5</a>
+            <a class="demo-btn active" href="#">Demo 5</a>
         </nav>
 
         <div id="demo-desc" class="d-flex justify-content-center">
             <div class="demo-border-light">
 
-                <h2 class="text-center">Simple icon picker with <var>onSelect()</var> and <var>onReset()</var> callbacks</h2>
+                <h2 class="text-center">Load a random icon library on each opening using the <var>onBeforeOpen</var> option</h2>
             </div>
         </div>
 
@@ -44,24 +44,83 @@
         </div>
 
         <div class="demo-output hidden" id="output">
+            <p><strong id="icon-library-info"></strong> loaded.</p>
             <pre><code class="demo-output-json" id="output-json"></code></pre>
             <div class="demo-output-icon" id="output-icon"></div>
         </div>
     </div>
 
     <script src="../assets/js/universal-icon-picker.min.js"></script>
+
     <script>
+        const availableIconLibraries = [
+            {
+                iconLibrary: 'font-awesome',
+                iconLibraryCss: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'
+            },
+            {
+                iconLibrary: 'material-icons-filled',
+                iconLibraryCss: 'https://fonts.googleapis.com/css2?family=Material+Icons'
+            },
+            {
+                iconLibrary: 'bootstrap-icons',
+                iconLibraryCss: 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css'
+            },
+            {
+                iconLibrary: 'elegant-icons',
+                iconLibraryCss: 'elegant-icons.min.css'
+            },
+            {
+                iconLibrary: 'feather-icons',
+                iconLibraryCss: 'feather-icons.min.css'
+            },
+            {
+                iconLibrary: 'foundation-icons',
+                iconLibraryCss: 'foundation-icons.min.css'
+            },
+            {
+                iconLibrary: 'happy-icons',
+                iconLibraryCss: 'happy-icons.min.css'
+            },
+            {
+                iconLibrary: 'icomoon',
+                iconLibraryCss: 'icomoon.min.css'
+            },
+            {
+                iconLibrary: 'open-iconic',
+                iconLibraryCss: 'open-iconic.min.css'
+            },
+            {
+                iconLibrary: 'tabler-icons',
+                iconLibraryCss: 'tabler-icons.min.css'
+            },
+            {
+                iconLibrary: 'weather-icons',
+                iconLibraryCss: 'weather-icons.min.css'
+            },
+            {
+                iconLibrary: 'zondicons',
+                iconLibraryCss: 'zondicons.min.css'
+            }
+        ];
+
         document.addEventListener('DOMContentLoaded', function(event) {
         var uip = new UniversalIconPicker('#uip-select-btn', {
-            iconLibraries: [
-            'happy-icons.min.json',
-            'font-awesome.min.json'
-            ],
-            iconLibrariesCss: [
-            'happy-icons.min.css',
-            'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'
-            ],
             resetSelector: '#uip-reset-btn',
+            onBeforeOpen: function() {
+                // random number between 0 and max
+                let max = availableIconLibraries.length;
+                let randomIndex = Math.floor(Math.random() * max);
+
+                // set a random library
+                let currentIconLibrary = availableIconLibraries[randomIndex].iconLibrary,
+                    currentIconLibraryCss = availableIconLibraries[randomIndex].iconLibraryCss;
+                uip.setOptions({
+                    iconLibraries: [currentIconLibrary + '.min.json'],
+                    iconLibrariesCss: [currentIconLibraryCss]
+                });
+                document.getElementById('icon-library-info').innerText = currentIconLibrary;
+            },
             onSelect: function(jsonIconData) {
                 console.log(jsonIconData);
                 document.getElementById('output-json').innerHTML = JSON.stringify(jsonIconData, null, 4);
