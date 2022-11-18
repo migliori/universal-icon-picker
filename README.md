@@ -66,7 +66,7 @@ Originally forked from [aesthetic-icon-picker](https://github.com/sh-sabbir/aest
 Clone / download or install with npm
 
 ```bash
-  npm install @migliori/universal-icon-picker@1.1.0
+  npm install @migliori/universal-icon-picker@1.1.1
 ```
 
 ## Usage/Examples
@@ -180,6 +180,10 @@ Contributions are always welcome!
 Please contact us for any improvement suggestions or send your pull requests
 
 ## Changelog
+
+2022/11/18
+
+- update npm package
 
 2022/02/23
 
