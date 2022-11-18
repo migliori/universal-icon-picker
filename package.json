@@ -15,13 +15,14 @@
     "picker",
     "javascript",
     "fontawesome",
+    "bootstrap",
     "material",
-    "bootstrap"
+    "icon picker"
   ],
   "author": "Gilles Migliori",
   "license": "GPL-3.0-or-later",
   "bugs": {
     "url": "https://github.com/migliori/universal-icon-picker/issues"
   },
-  "homepage": "https://github.com/migliori/universal-icon-picker#readme"
+  "homepage": "https://universal-icon-picker.miglisoft.com"
 }
