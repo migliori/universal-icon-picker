@@ -66,7 +66,7 @@ Originally forked from [aesthetic-icon-picker](https://github.com/sh-sabbir/aest
 Clone / download or install with npm
 
 ```bash
-  npm install @migliori/universal-icon-picker@1.1.3
+  npm install @migliori/universal-icon-picker@1.1.4
 ```
 
 ## Usage/Examples
@@ -101,7 +101,7 @@ Clone / download or install with npm
 | ----------- | ---- | ------ |
 | allowEmpty | *Boolean* | Add an empty icon selector in the beginning of each icon list.<br />Default: true |
 | iconLibraries | *Array* | Array of JSON icon libraries in `assets/icons-libraries`.<br />Default: `null` |
-| iconLibrariesCss | *Array* | Array of CSS icon libraries in `assets/stylesheets` or from any CDN.<br />Default: `null` |
+| iconLibrariesCss | *Array* | Array of CSS icon libraries in `assets/stylesheets` or from any CDN. Leave empty if your page already loads them.<br />Default: `null` |
 | mode | *String* | `'autoload'` or `'onrequest'`. Default: `'autoload'` |
 | onReset | *Function* | Callback function when the user clicks the `reset` button.<br />Default: `null` |
 | onSelect | *Function* | Callback function when the user clicks the `insert` button.<br />Default: `null` |
@@ -168,6 +168,25 @@ See the source code of the [demo](https://universal-icon-picker.miglisoft.com) f
   ```
 
   Live demo: [https://universal-icon-picker.miglisoft.com/demo/demo-4.html](https://universal-icon-picker.miglisoft.com/demo/demo-4.html)
+
+## Change / Upgrade Fontawesome version & icons
+
+A built-in tool is provided to get the Fontawesome icon list from the Fontawesome API.
+
+To choose the Fontawesome version:
+
+1. open `tools/fontawesome-icons-list.html` in your code editor and change the version number:
+
+    ```html
+    // set the fontawesome version version here
+    const fontawesomeVersion = '6.0.0';
+    ```
+
+2. open it in your browser to retrieve the JSON list
+
+3. save the complete list in `assets/icon-libraries/font-awesome.json` and each style (brands, regular, solid) in the appropriate json file (`assets/icon-libraries/font-awesome-brands.json`, ...)
+
+4. minify the json files to `.min.json`
 
 ## Screenshots
 
