@@ -66,7 +66,7 @@ Originally forked from [aesthetic-icon-picker](https://github.com/sh-sabbir/aest
 Clone / download or install with npm
 
 ```bash
-  npm install @migliori/universal-icon-picker@1.1.1
+  npm install @migliori/universal-icon-picker@1.1.2
 ```
 
 ## Usage/Examples
@@ -181,10 +181,6 @@ Please contact us for any improvement suggestions or send your pull requests
 
 ## Changelog
 
-2022/11/18
-
-- update npm package
-
 2022/02/23
 
 - First release
@@ -197,6 +193,10 @@ Please contact us for any improvement suggestions or send your pull requests
 - allow more complex trigger button selectors ; ie: '#div button["name=iconpicker-opener"]'
 - add the "onBeforeOpen" option
 - add the "onBeforeOpen" demo (demo 5)
+
+2022/11/18
+
+- update npm package
 
 ## License
 

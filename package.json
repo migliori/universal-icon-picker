@@ -1,6 +1,6 @@
 {
   "name": "@migliori/universal-icon-picker",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Vanilla JS Icon Picker for any Icon Library",
   "main": "index.html",
   "scripts": {
