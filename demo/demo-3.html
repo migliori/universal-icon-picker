@@ -109,6 +109,12 @@
                 <button id="fi-select-btn" class="demo-btn btn-hover-effect btn-hover-effect--effect-4 demo-btn-sm demo-bg-3" title="Foundation Icons">Open the icon picker</button>
                 <div class="demo-output-icon-sm demo-color-3-dark" id="fi-output-icon"></div>
             </div>
+			<div class="demo-wrapper">
+			
+				<h3 class="demo-color-3-dark">Fomantic-UI Icons</h3>
+				<button id="fomantic-ui-select-btn" class="demo-btn btn-hover-effect btn-hover-effect--effect-4 demo-btn-sm demo-bg-3" title="Fomantic-UI Icons">Open the icon picker</button>
+				<div class="demo-output-icon-sm demo-color-3-dark" id="fomantic-ui-output-icon"></div>
+			</div>
             <div class="demo-wrapper">
 
                 <h3 class="demo-color-3-dark">Zondicons</h3>
@@ -245,6 +251,18 @@
 			],
 			iconLibrariesCss: [
 			'foundation-icons.min.css'
+			]
+		},
+		{
+			selector: '#fomantic-ui-select-btn',
+			onSelect: function (jsonIconData) {
+				document.getElementById('fomantic-ui-output-icon').innerHTML = jsonIconData.iconHtml;
+			},
+			iconLibraries: [
+				'fomantic-ui.min.json'
+			],
+			iconLibrariesCss: [
+				'fomantic-ui-icons.min.css'
 			]
 		},
 		{

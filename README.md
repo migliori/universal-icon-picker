@@ -53,6 +53,7 @@ Originally forked from [aesthetic-icon-picker](https://github.com/sh-sabbir/aest
 - Bootstrap Icons
 - Elegant Icons
 - Feather Icons
+- Fomantic UI Icons
 - Foundation Icons
 - Happy Icons
 - Icomoon
@@ -216,6 +217,10 @@ Please contact us for any improvement suggestions or send your pull requests
 2022/11/18
 
 - update npm package
+
+2023/02/09
+
+- add Fomantic UI icons
 
 ## License
 
