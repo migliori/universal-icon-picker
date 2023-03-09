@@ -98,15 +98,16 @@ Clone / download or install with npm
 
 ## Options
 
-| option | type | value |
-| ----------- | ---- | ------ |
-| allowEmpty | *Boolean* | Add an empty icon selector in the beginning of each icon list.<br />Default: true |
-| iconLibraries | *Array* | Array of JSON icon libraries in `assets/icons-libraries`.<br />Default: `null` |
-| iconLibrariesCss | *Array* | Array of CSS icon libraries in `assets/stylesheets` or from any CDN. Leave empty if your page already loads them.<br />Default: `null` |
-| mode | *String* | `'autoload'` or `'onrequest'`. Default: `'autoload'` |
-| onReset | *Function* | Callback function when the user clicks the `reset` button.<br />Default: `null` |
-| onSelect | *Function* | Callback function when the user clicks the `insert` button.<br />Default: `null` |
-| resetSelector | *String* | Selector for the HTML *reset* button on your page.<br />Default: `null` |
+| option           | type       | value                                                                                                                                  |
+|------------------|------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| allowEmpty       | *Boolean*  | Add an empty icon selector in the beginning of each icon list.<br />Default: true                                                      |
+| iconLibraries    | *Array*    | Array of JSON icon libraries in `assets/icons-libraries`.<br />Default: `null`                                                         |
+| iconLibrariesCss | *Array*    | Array of CSS icon libraries in `assets/stylesheets` or from any CDN. Leave empty if your page already loads them.<br />Default: `null` |
+| mode             | *String*   | `'autoload'` or `'onrequest'`. Default: `'autoload'`                                                                                   |
+| onReset          | *Function* | Callback function when the user clicks the `reset` button.<br />Default: `null`                                                        |
+| onSelect         | *Function* | Callback function when the user clicks the `insert` button.<br />Default: `null`                                                       |
+| resetSelector    | *String*   | Selector for the HTML *reset* button on your page.<br />Default: `null`                                                                |
+| loadCustomCss    | *Boolean*  | If true, universal icon picker does **not** load its own css allowing for custom css. Default: `false`                                 |
 
 ### Example
 
@@ -221,6 +222,12 @@ Please contact us for any improvement suggestions or send your pull requests
 2023/02/09
 
 - add Fomantic UI icons
+
+2023/03/09
+
+- add loadCustomCss option
+- Double click inserts icon
+
 
 ## License
 
