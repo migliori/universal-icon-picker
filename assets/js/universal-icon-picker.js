@@ -88,7 +88,8 @@ var loadedDependencies = [];
             onBeforeOpen: null,
             onReset: null,
             onSelect: null,
-            resetSelector: null
+            resetSelector: null,
+            loadCustomCss: false
         };
         this.options = extend(defaults, options);
 
@@ -188,13 +189,16 @@ var loadedDependencies = [];
                 }
 
                 if (!this.iconEventsLoaded) {
-                    // selected icon highlited by adding class
+                    // selected icon highlighted by adding class
                     this.universalDomEle.querySelectorAll('.uip-icon-item').forEach((item) => {
                         item.addEventListener('click', (evt) => {
                             this.iconWrap.forEach((el) => {
                                 el.classList.remove('universal-selected');
                             });
                             evt.currentTarget.classList.toggle('universal-selected');
+                        });
+                        item.addEventListener('dblclick', (evt) => {
+                            this.universalDomEle.querySelector('.uip-insert-icon-button').click();
                         });
                     });
                     this.iconEventsLoaded = true;
@@ -259,7 +263,7 @@ var loadedDependencies = [];
 
         _loadCssFiles: function () {
             let link = document.createElement('link');
-            if (!loadedDependencies.includes('universal-icon-picker.min.css')) {
+            if (!loadedDependencies.includes('universal-icon-picker.min.css') & !this.options.loadCustomCss) {
                 link.rel = 'stylesheet';
                 link.type = 'text/css';
                 link.href = iconPickerUrl + 'stylesheets/universal-icon-picker.min.css';
