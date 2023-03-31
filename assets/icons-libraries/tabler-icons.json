@@ -2,6 +2,7 @@
     "prefix": "ti ti-",
     "icon-style": "tabler-icons",
     "list-icon": "ti ti-moon",
+    "version": "1.54.0",
     "icons": [
         "2fa",
         "3d-cube-sphere",

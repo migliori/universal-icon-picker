@@ -2,6 +2,7 @@
 	"prefix": "fa-regular fa-",
 	"icon-style": "fa-regular",
 	"list-icon": "fa-regular fa-font-awesome",
+	"version": "6.0.0",
 	"icons": [
 		"hand-point-left",
 		"face-sad-tear",

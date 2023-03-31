@@ -2,6 +2,7 @@
     "prefix": "fi fi-",
     "icon-style": "fi",
     "list-icon": "fi fi-trophy",
+    "version": "3.0.0-alpha.3",
     "icons": [
         "address-book",
         "alert",

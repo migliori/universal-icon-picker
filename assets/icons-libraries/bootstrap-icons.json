@@ -2,6 +2,7 @@
     "prefix": "bi bi-",
     "icon-style": "bi",
     "list-icon": "bi bi-badge1",
+    "version": "1.8.1",
     "icons": [
         "123",
         "alarm-fill",

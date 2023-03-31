@@ -2,6 +2,7 @@
     "prefix": "icon-",
     "icon-style": "icomoon",
     "list-icon": "icon-magic-wand",
+    "version": "1.0",
     "icons": [
         "home",
         "home2",

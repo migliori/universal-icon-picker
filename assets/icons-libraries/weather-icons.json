@@ -2,6 +2,7 @@
     "prefix": "wi wi-",
     "icon-style": "weather-icons",
     "list-icon": "wi wi-thunderstorm",
+    "version": "2.0.10",
     "icons": [
         "day-sunny",
         "day-cloudy",

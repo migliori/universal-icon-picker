@@ -2,6 +2,7 @@
     "prefix": "material-icons-outlined",
     "icon-style": "mi-outlined",
     "list-icon": "chair",
+    "version": "4.0.0",
     "icons": [
         "3d_rotation",
         "accessibility",

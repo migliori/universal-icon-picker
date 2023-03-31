@@ -2,6 +2,7 @@
     "prefix": "feather-icon feather-",
     "icon-style": "feather-icons",
     "list-icon": "feather-icon feather-power",
+    "version": "4.28.0",
     "icons": [
         "activity",
         "airplay",

@@ -2,6 +2,7 @@
   "solid": {
     "prefix": "",
     "icon-style": "fomantic-ui-solid",
+    "version": "5.15.4",
     "icons": [
       "linkedin in icon",
       "zoom in icon",

@@ -2,6 +2,7 @@
 	"prefix": "fa-brands fa-",
 	"icon-style": "fa-brands",
 	"list-icon": "fa-brands fa-font-awesome",
+	"version": "6.0.0",
 	"icons": [
 		"steam-symbol",
 		"pix",

@@ -2,6 +2,7 @@
 	"prefix": "fa-solid fa-",
 	"icon-style": "fa-solid",
 	"list-icon": "fa-solid fa-font-awesome",
+	"version": "6.0.0",
 	"icons": [
 		"turn-up",
 		"hand-holding-medical",

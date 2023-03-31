@@ -2,6 +2,7 @@
 	"prefix": "hm hm-",
 	"icon-style": "hm",
 	"list-icon": "hm hm-badge1",
+	"version": "4.0",
 	"icons": [
 		"3d-rotate",
 		"degree",

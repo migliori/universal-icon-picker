@@ -2,6 +2,7 @@
     "prefix": "zi zi-",
     "icon-style": "zondicons",
     "list-icon": "zi zi-trophy",
+    "version": "1.0",
     "icons": [
         "add-outline",
         "add-solid",

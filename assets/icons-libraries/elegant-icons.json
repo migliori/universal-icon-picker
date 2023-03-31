@@ -2,6 +2,7 @@
     "prefix": "elegant-icon elegant-",
     "icon-style": "elegant-icons",
     "list-icon": "elegant-icon elegant-icon_globe_alt",
+    "version": "1.0",
     "icons": [
         "arrow_up",
         "arrow_down",

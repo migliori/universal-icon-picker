@@ -84,15 +84,12 @@
     <script src="../assets/js/universal-icon-picker.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function(event) {
-            const $selectElement  = document.querySelector('select[name ="icon-library-select"]'),
-            $uipSelectBtn   = document.getElementById('uip-select-btn'),
-            $demoOutput     = document.getElementById('output'),
-            $demoOutputIcon = document.getElementById('output-icon');
+            const $selectElement  = document.querySelector('select[name ="icon-library-select"]');
 
             new SlimSelect({ select: 'select[name ="icon-library-select"]' });
 
             // create the Universal Icon Picker
-            var uip = new UniversalIconPicker('#uip-select-btn', {
+            const uip = new UniversalIconPicker('#uip-select-btn', {
                 resetSelector: '#uip-reset-btn',
                 mode: 'onrequest',
                 onSelect: function(jsonIconData) {

@@ -2,6 +2,7 @@
     "prefix": "oi oi-",
     "icon-style": "open-iconic",
     "list-icon": "oi oi-globe",
+    "version": "1.1.1",
     "icons": [
         "account-login",
         "account-logout",

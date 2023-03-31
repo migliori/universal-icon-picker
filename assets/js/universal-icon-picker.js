@@ -1,5 +1,5 @@
-var iconPickerUrl = document.currentScript.src.replace(/js\/([a-z\.-]+)$/gm, '');
-var loadedDependencies = [];
+const iconPickerUrl = document.currentScript.src.replace(/js\/([a-z\.-]+)$/gm, '');
+const loadedDependencies = [];
 
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {
@@ -12,30 +12,30 @@ var loadedDependencies = [];
 }(this, function () {
     'use strict';
 
-    var createDomEle = function (string) {
-        var ele = document.createElement('div');
+    const createDomEle = function (string) {
+        const ele = document.createElement('div');
         ele.innerHTML = string;
         return ele.firstChild;
     }
 
-    var debounce = function (func, wait, immediate) {
-        var timeout;
+    const debounce = function (func, wait, immediate) {
+        let timeout;
         return function () {
-            var context = this,
+            const context = this,
                 args = arguments;
-            var later = function () {
+            const later = function () {
                 timeout = null;
                 if (!immediate) func.apply(context, args);
             };
-            var callNow = immediate && !timeout;
+            const callNow = immediate && !timeout;
             clearTimeout(timeout);
             timeout = setTimeout(later, wait);
             if (callNow) func.apply(context, args);
         };
     };
 
-    var escapeHtml = function (text) {
-        var map = {
+    const escapeHtml = function (text) {
+        const map = {
             '&': '&amp;',
             '<': '&lt;',
             '>': '&gt;',
@@ -51,8 +51,8 @@ var loadedDependencies = [];
      * @param {Object} defaults Default settings
      * @param {Object} options User options
      */
-    var extend = function (defaults, options) {
-        var prop, extended = {};
+    const extend = function (defaults, options) {
+        let prop, extended = {};
         for (prop in defaults) {
             if (Object.prototype.hasOwnProperty.call(defaults, prop)) {
                 extended[prop] = defaults[prop];
@@ -67,7 +67,7 @@ var loadedDependencies = [];
         return extended;
     };
 
-    var getLibraryName = function (string) {
+    const getLibraryName = function (string) {
         return string.replace(/([A-Z])/g, ' $1');
     }
 
@@ -231,7 +231,7 @@ var loadedDependencies = [];
         },
 
         _iconItemMarkup: function (libraryName, libraryItem) {
-            var markup = '',
+            let markup = '',
                 library = libraryItem['icon-style'],
                 prefix = libraryItem['prefix'];
             if (this.options.allowEmpty) {
@@ -309,7 +309,7 @@ var loadedDependencies = [];
                 .then(response => response.json())
                 .then(data => {
                     // Success!
-                    var camelCasedIconLibrary = iconLib.replace(/-([a-z])/g, function (g) { return g[1].toUpperCase(); }).replace(/\.[a-z.]+$/, '');
+                    const camelCasedIconLibrary = iconLib.replace(/-([a-z])/g, function (g) { return g[1].toUpperCase(); }).replace(/\.[a-z.]+$/, '');
                     let newLibrary = {};
                     newLibrary[camelCasedIconLibrary] = data;
                     Object.assign(this.iconLibraries, newLibrary);  // new icon library merge
@@ -368,7 +368,7 @@ var loadedDependencies = [];
         _searchFunc: function (e) {
             // console.log(this.value.toLowerCase());
 
-            var searchText = e.target.value.toLowerCase();
+            const searchText = e.target.value.toLowerCase();
             this._searchFilterFunc(searchText, 'filter');
 
         },
@@ -416,7 +416,7 @@ var loadedDependencies = [];
         },
 
         _setSideBarList: function (libraryName, libraryContent) {
-            var listItem;
+            let listItem;
             if (libraryContent.icons !== undefined) {
                 listItem = {
                     'title': libraryName,
@@ -439,7 +439,7 @@ var loadedDependencies = [];
         },
 
         _sideBarListMarkup: function (sideBarList) {
-            var markup = '';
+            let markup = '';
             sideBarList.forEach((item) => {
                 let activeClazz = '';
                 if (item['library-id'] === this.activeLibraryId) {
