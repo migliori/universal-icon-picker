@@ -108,6 +108,32 @@ Clone / download or install with npm
 | onSelect         | *Function* | Callback function when the user clicks the `insert` button.<br />Default: `null`                                                       |
 | resetSelector    | *String*   | Selector for the HTML *reset* button on your page.<br />Default: `null`                                                                |
 | loadCustomCss    | *Boolean*  | If true, universal icon picker does **not** load its own css allowing for custom css. Default: `false`                                 |
+## Configuring loaded assets
+
+Universtal icon picker will retrieve some assets from the server based on where ths script itself was retrieved from (`assets/js/universal-icon-picker.min.js`) :
+
+1. Icons from the `assets/images`folder
+2. Icon library json files from the `assets/icon-libraries` folder
+
+Also, the naming of the library names in the sidebar is derived from their file name in `assets/icon-libraries`.
+
+In most cases this will just work fine. For some installations, however, you need to adjust the exact paths from where to retrieve those assets.
+
+### Configuring icon assets
+
+Three option settings overwrite the paths for the three icons used:
+
+| option           | type     | value                                                |
+|------------------|----------|------------------------------------------------------|
+| closeUrl         | *String* | Path of the close button icon (some type of "x")     |
+| starUrl          | *String* | Path of the star icon for the side bar               |
+| searchUrl        | *String* | Path of the magnifying glass icon for the search bar |
+
+### Configuring library assets
+
+Library assets are defined by `iconLibraries`. If the library does include a slash (`/`) it is assumed to be an URL or path of the library's json file. If it does not include a slash the library is searched for in the `assets/icon-libraries` folder.
+
+
 
 ### Example
 
@@ -173,7 +199,7 @@ See the source code of the [demo](https://universal-icon-picker.miglisoft.com) f
 
 ## Change / Upgrade Fontawesome version & icons
 
-A built-in tool is provided to get the Fontawesome icon list from the Fontawesome API.
+A built-in tool is provided to get the Fontawesome icon list from the Fontawesome API and for Bootstrap icons to scrape the Bootstrap icon list from their website.
 
 To choose the Fontawesome version:
 
@@ -189,6 +215,8 @@ To choose the Fontawesome version:
 3. save the complete list in `assets/icon-libraries/font-awesome.json` and each style (brands, regular, solid) in the appropriate json file (`assets/icon-libraries/font-awesome-brands.json`, ...)
 
 4. minify the json files to `.min.json`
+
+For Bootstrap icons use `tools/bootstrap-icons-list.html`. It scrapes the latest version from the website. You will need to add the version number manually to the generated json file.
 
 ## Screenshots
 
