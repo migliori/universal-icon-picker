@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/*jshint esversion: 8 */
 const iconPickerUrl = document.currentScript.src.replace(/js\/([a-z\.-]+)$/gm, '');
 const loadedDependencies = [];
 
@@ -16,7 +18,7 @@ const loadedDependencies = [];
         const ele = document.createElement('div');
         ele.innerHTML = string;
         return ele.firstChild;
-    }
+    };
 
     const debounce = function (func, wait, immediate) {
         let timeout;
@@ -40,10 +42,12 @@ const loadedDependencies = [];
             '<': '&lt;',
             '>': '&gt;',
             '"': '&quot;',
-            "'": '&#039;'
+            '\'': '&#039;',
         };
 
-        return text.replace(/[&<>"']/g, function (m) { return map[m]; });
+        return text.replace(/[&<>"']/g, function (m) {
+            return map[m];
+        });
     };
 
     /**
@@ -69,7 +73,7 @@ const loadedDependencies = [];
 
     const getLibraryName = function (string) {
         return string.replace(/([A-Z])/g, ' $1');
-    }
+    };
 
     /**
      * Plugin Object
@@ -104,7 +108,7 @@ const loadedDependencies = [];
         this.sideBarBtn = '';
         this.sideBarList = [];
 
-        this.universalWrap = '<div class="uip-modal uip-open" id="uip-modal' + this.idSuffix + '"><div class="uip-modal--content"><div class="uip-modal--header"><div class="uip-modal--header-logo-area"><span class="uip-modal--header-logo-title">Universal Icon Picker</span></div><div class="uip-modal--header-close-btn"><img src="' + iconPickerUrl + '/images/xmark-solid.svg" width="20" height="16" alt="Close" title="Close" /></div></div><div class="uip-modal--body"><div id="uip-modal--sidebar' + this.idSuffix + '" class="uip-modal--sidebar"><div class="uip-modal--sidebar-tabs"></div></div><div id="uip-modal--icon-preview-wrap' + this.idSuffix + '" class="uip-modal--icon-preview-wrap"><div class="uip-modal--icon-search"><input name="" value="" placeholder="Filter by name..."><img src="' + iconPickerUrl + '/images/magnifying-glass-solid.svg" width="20" height="16" alt="Search" title="Search" /></div><div class="uip-modal--icon-preview-inner"><div id="uip-modal--icon-preview' + this.idSuffix + '" class="uip-modal--icon-preview"></div></div></div></div><div class="uip-modal--footer"><button class="uip-insert-icon-button">Insert</button></div></div></div>';
+        this.universalWrap = '<div class="uip-modal uip-open" id="uip-modal' + this.idSuffix + '"><div class="uip-modal--content"><div class="uip-modal--header"><div class="uip-modal--header-logo-area"><span class="uip-modal--header-logo-title">Universal Icon Picker</span></div><div class="uip-modal--header-close-btn"><img src="' + (options.closeUrl || iconPickerUrl + '/images/xmark-solid.svg') + '" width="20" height="16" alt="Close" title="Close" /></div></div><div class="uip-modal--body"><div id="uip-modal--sidebar' + this.idSuffix + '" class="uip-modal--sidebar"><div class="uip-modal--sidebar-tabs"></div></div><div id="uip-modal--icon-preview-wrap' + this.idSuffix + '" class="uip-modal--icon-preview-wrap"><div class="uip-modal--icon-search"><input name="" value="" placeholder="Filter by name..."><img src="' + (options.searchUrl || iconPickerUrl + '/images/magnifying-glass-solid.svg') + '" width="20" height="16" alt="Search" title="Search" /></div><div class="uip-modal--icon-preview-inner"><div id="uip-modal--icon-preview' + this.idSuffix + '" class="uip-modal--icon-preview"></div></div></div></div><div class="uip-modal--footer"><button class="uip-insert-icon-button">Insert</button></div></div></div>';
 
         this.universalDomEle = createDomEle(this.universalWrap);
         this.sidebarTabs = this.universalDomEle.querySelector('.uip-modal--sidebar-tabs');
@@ -229,7 +233,7 @@ const loadedDependencies = [];
                 this.sideBarBtn.forEach(function (item) {
                     item.classList.remove('universal-active');
                 });
-                e.currentTarget.classList.add('universal-active')
+                e.currentTarget.classList.add('universal-active');
             }
             this._sidebarFilterFunc(e.currentTarget.dataset['libraryId']);
         },
@@ -243,11 +247,11 @@ const loadedDependencies = [];
             }
             if (prefix.match(/^material-icons/)) {
                 libraryItem['icons'].forEach(function (item) {
-                    markup += '<div class="uip-icon-item" data-library-id="' + library + '" data-filter="' + item + '" data-library-name="' + libraryName + '"><div class="uip-icon-item-inner"><i class="' + prefix + '">' + item + '</i><div class="uip-icon-item-name" title="' + item + '">' + item.replace("-", " ") + '</div></div></div>';
+                    markup += '<div class="uip-icon-item" data-library-id="' + library + '" data-filter="' + item + '" data-library-name="' + libraryName + '"><div class="uip-icon-item-inner"><i class="' + prefix + '">' + item + '</i><div class="uip-icon-item-name" title="' + item + '">' + item.replace('-', ' ') + '</div></div></div>';
                 });
             } else {
                 libraryItem['icons'].forEach(function (item) {
-                    markup += '<div class="uip-icon-item" data-library-id="' + library + '" data-filter="' + item + '" data-library-name="' + libraryName + '"><div class="uip-icon-item-inner"><i class="' + [prefix, item].join('') + '"></i><div class="uip-icon-item-name" title="' + item + '">' + item.replace("-", " ") + '</div></div></div>';
+                    markup += '<div class="uip-icon-item" data-library-id="' + library + '" data-filter="' + item + '" data-library-name="' + libraryName + '"><div class="uip-icon-item-inner"><i class="' + [prefix, item].join('') + '"></i><div class="uip-icon-item-name" title="' + item + '">' + item.replace('-', ' ') + '</div></div></div>';
                 });
             }
 
@@ -263,7 +267,7 @@ const loadedDependencies = [];
 
         _loadCssFiles: function () {
             let link = document.createElement('link');
-            if (!loadedDependencies.includes('universal-icon-picker.min.css') & !this.options.loadCustomCss) {
+            if (!loadedDependencies.includes('universal-icon-picker.min.css') && !this.options.loadCustomCss) {
                 link.rel = 'stylesheet';
                 link.type = 'text/css';
                 link.href = iconPickerUrl + 'stylesheets/universal-icon-picker.min.css';
@@ -300,16 +304,24 @@ const loadedDependencies = [];
             }
             if (i === 0 && this.options.iconLibraries.length > 1) {
                 this.sideBarList.push({
-                    "title": "all icons",
-                    "list-icon": "",
-                    "library-id": "all",
-                    "prefix": ""
+                    'title': 'all icons',
+                    'list-icon': '',
+                    'library-id': 'all',
+                    'prefix': '',
                 });
             }
 
-            let iconLib = this.options.iconLibraries[i];
+            let iconLibUrl = this.options.iconLibraries[i];
+            let iconLib;
+            if (iconLibUrl.includes('/')) {
+                iconLib = /[^/]*$/.exec(iconLibUrl)[0];
+                iconLib = /^[^.]*/.exec(iconLib)[0];
+            } else {
+                iconLibUrl = iconPickerUrl + 'icons-libraries/' + iconLibUrl;
+                iconLib = iconLibUrl;
+            }
 
-            await fetch(iconPickerUrl + 'icons-libraries/' + iconLib)
+            await fetch(iconLibUrl)
                 .then(response => response.json())
                 .then(data => {
                     // Success!
@@ -379,7 +391,7 @@ const loadedDependencies = [];
 
         _searchFilterFunc: function (filterText, dataName) {
             this.filterIcon = Object.entries(this.iconWrap).filter((item) => {
-                if (-1 == item[1].dataset[dataName].indexOf(filterText) || (this.activeLibraryId !== 'all' && item[1].dataset['libraryId'] !== this.activeLibraryId)) {
+                if (-1 === item[1].dataset[dataName].indexOf(filterText) || (this.activeLibraryId !== 'all' && item[1].dataset['libraryId'] !== this.activeLibraryId)) {
                     return false;
                 }
                 return true;
@@ -391,17 +403,17 @@ const loadedDependencies = [];
 
         _setIconAndSidebarList: function () {
             for (const [libraryName, libraryContent] of Object.entries(this.iconLibraries)) {
-                this._setSideBarList(getLibraryName(libraryName), libraryContent);
+                this._setSideBarList(libraryContent.verboseName || getLibraryName(libraryName), libraryContent);
                 this._setIconMarkup(libraryName, libraryContent);
             }
         },
 
         _setIconMarkup: function (libraryName, libraryContent) {
             if (libraryContent.icons !== undefined) {
-                this.iconMarkup += this._iconItemMarkup(libraryName, libraryContent)
+                this.iconMarkup += this._iconItemMarkup(libraryName, libraryContent);
             } else {
                 Object.entries(libraryContent).forEach((item) => {
-                    this.iconMarkup += this._iconItemMarkup(libraryName, item[1])
+                    this.iconMarkup += this._iconItemMarkup(libraryName, item[1]);
                 });
             }
         },
@@ -432,12 +444,12 @@ const loadedDependencies = [];
             } else {
                 Object.entries(libraryContent).forEach(item => {
                     listItem = {
-                        "title": libraryName + ' - ' + item[0],
-                        "prefix": item[1]['prefix'] !== undefined ? item[1]['prefix'] : '',
-                        "list-icon": item[1]['list-icon'] !== undefined ? item[1]['list-icon'] : "",
-                        "library-id": item[1]['icon-style'] !== undefined ? item[1]['icon-style'] : "all",
+                        'title': libraryName + ' - ' + item[0],
+                        'prefix': item[1]['prefix'] !== undefined ? item[1]['prefix'] : '',
+                        'list-icon': item[1]['list-icon'] !== undefined ? item[1]['list-icon'] : '',
+                        'library-id': item[1]['icon-style'] !== undefined ? item[1]['icon-style'] : 'all',
                     };
-                    this.sideBarList.push(listItem)
+                    this.sideBarList.push(listItem);
                 });
             }
         },
@@ -456,12 +468,12 @@ const loadedDependencies = [];
                     }
                     markup += '<div class="uip-modal--sidebar-tab-item' + activeClazz + '" data-library-id="' + item['library-id'] + '">' + iconTag + item['title'] + '</div>';
                 } else {
-                    markup += '<div class="uip-modal--sidebar-tab-item' + activeClazz + '" data-library-id="' + item['library-id'] + '"><img src="' + iconPickerUrl + '/images/star-of-life-solid.svg" width="13.125px" height="auto" alt="All" title="All" />' + item['title'] + '</div>';
+                    markup += '<div class="uip-modal--sidebar-tab-item' + activeClazz + '" data-library-id="' + item['library-id'] + '"><img src="' + (this.options.starUrl || iconPickerUrl + '/images/star-of-life-solid.svg') + '" width="13.125px" height="auto" alt="All" title="All" />' + item['title'] + '</div>';
                 }
             });
 
             return markup;
-        }
+        },
     };
 
     return UniversalIconPicker;
