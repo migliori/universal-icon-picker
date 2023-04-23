@@ -123,11 +123,11 @@ In most cases this will just work fine. For some installations, however, you nee
 
 Three option settings overwrite the paths for the three icons used:
 
-| option           | type     | value                                                                                                           |
-|------------------|----------|-----------------------------------------------------------------------------------------------------------------|
-| closeUrl         | *String* | Path of the close button icon (some type of "x"                                                                 |
-| starUrl          | *String* | Path of the star icon for the side bar                                                                          |
-| searchUrl        | *String* | Path of the magnifying glass icon for the search bar                                                           |
+| option           | type     | value                                                |
+|------------------|----------|------------------------------------------------------|
+| closeUrl         | *String* | Path of the close button icon (some type of "x")     |
+| starUrl          | *String* | Path of the star icon for the side bar               |
+| searchUrl        | *String* | Path of the magnifying glass icon for the search bar |
 
 ### Configuring library assets
 
