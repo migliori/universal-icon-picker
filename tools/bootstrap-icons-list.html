@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap icons list</title>
+</head>
+
+<body>
+    <pre><code id="icons-list"></code></pre>
+    <script>
+        /* -----------------------------------------------------------------------
+        This script gets the latest icons by category from the Fontawesome API
+        ----------------------------------------------------------------------- */
+
+        // set the fontawesome version version here
+        const fontawesomeVersion = '6.0.0';
+
+        fetch('https://icons.getbootstrap.com', {
+            method: 'get',
+            cache: 'no-store'
+        }).then(function (response) {
+            return response.text()
+        }).then(function (html) {
+            let items, version;
+
+            document.getElementById('content').innerHTML = html;
+            version = document.querySelector('div a[href^="https://github.com/twbs/bootstrap/releases/tag/"]');
+            if (version) {
+                console.log(version);
+                version = version.innerText.replace(/^v/, '');;
+            } else {
+                version = '<please add by hand>';
+            }
+
+            output = {
+                "prefix": "bi bi-",
+                "icon-style": "bi",
+                "list-icon": "bi bi-badge1",
+                "version": version,
+                "icons": [],
+            }
+            items = document.querySelectorAll('main ul li a div:last-child');
+            items.forEach(item => {
+                output.icons.push(item.innerText);
+            })
+            document.getElementById('icons-list').innerHTML = JSON.stringify(output, null, 4);;
+        }).catch(function (error) {
+            console.log(error);
+        });
+    </script>
+    <div id="content" style="display: none"></div>
+</body>
+
+</html>
