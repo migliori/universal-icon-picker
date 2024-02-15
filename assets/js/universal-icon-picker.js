@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 /*jshint esversion: 8 */
-const iconPickerUrl = document.currentScript.src.replace(/js\/([a-z\.-]+)$/gm, '');
+const scriptUrl = new URL(document.currentScript.src);
+const iconPickerUrl = scriptUrl.origin + scriptUrl.pathname.substring(0, scriptUrl.pathname.lastIndexOf('/js') + 1);
 const loadedDependencies = [];
 
 (function (root, factory) {
