@@ -319,7 +319,7 @@ const loadedDependencies = [];
                 iconLib = /^[^.]*/.exec(iconLib)[0];
             } else {
                 iconLibUrl = iconPickerUrl + 'icons-libraries/' + iconLibUrl;
-                iconLib = iconLibUrl;
+                iconLib = iconLibUrl.substring(iconLibUrl.lastIndexOf('/') + 1);
             }
 
             await fetch(iconLibUrl)

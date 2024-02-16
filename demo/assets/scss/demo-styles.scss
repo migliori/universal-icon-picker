@@ -95,10 +95,12 @@ pre {
     padding: 1rem;
     background: #eee;
     margin: 0 auto 60px;
+    overflow: auto;
 }
 
 .demo-btn {
     display: inline-block;
+    margin-bottom: 0.25rem;
     padding: 0.5rem 1.5rem;
     font-size: 1rem;
     border: none;
@@ -128,6 +130,7 @@ pre {
 }
 
 .demo-nav {
+    flex-wrap: wrap;
     margin-bottom: 60px;
     a.demo-btn {
         color: #fff;
