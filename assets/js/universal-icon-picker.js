@@ -156,9 +156,13 @@ const loadedDependencies = [];
                     document.body.appendChild(this.universalDomEle);
 
                     //Icon library close by clicking close button
-                    this.universalDomEle.querySelector('.uip-modal--header-close-btn').addEventListener('click', () => {
-                        this.universalDomEle.classList.add('uip-close');
-                        this.universalDomEle.classList.remove('uip-open');
+                    this.universalDomEle.querySelector('.uip-modal--header-close-btn').addEventListener('click', () => this.close() );
+
+                    //Icon library close by clicking outside modal
+                    this.universalDomEle.addEventListener('click', (e) => {
+                        if (e.target === this.universalDomEle) {
+                            this.close();
+                        }
                     });
 
                     //Insert button
@@ -184,8 +188,7 @@ const loadedDependencies = [];
 
                             this.options.onSelect(jsonOutput);
                         }
-                        this.universalDomEle.classList.add('uip-close');
-                        this.universalDomEle.classList.remove('uip-open');
+                        this.close();
                     });
                 } else {
                     //Icon library open if dom element exist
@@ -211,6 +214,11 @@ const loadedDependencies = [];
 
                 this.universalDomEle.querySelector('.uip-modal--icon-search input').focus();
             });
+        },
+
+        close: function () {
+            this.universalDomEle.classList.add('uip-close');
+            this.universalDomEle.classList.remove('uip-open');
         },
 
         setOptions: function (opts) {
