@@ -20,7 +20,7 @@
     "icon picker"
   ],
   "author": "Gilles Migliori",
-  "license": "GPL-3.0-or-later",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/migliori/universal-icon-picker/issues"
   },
