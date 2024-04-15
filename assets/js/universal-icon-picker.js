@@ -499,7 +499,7 @@ const i18nMessages = {
                     }
                     markup += '<div class="uip-modal--sidebar-tab-item' + activeClazz + '" data-library-id="' + item['library-id'] + '">' + iconTag + item['title'] + '</div>';
                 } else {
-                    markup += '<div class="uip-modal--sidebar-tab-item' + activeClazz + '" data-library-id="' + item['library-id'] + '"><img src="' + iconPickerUrl + '/images/star-of-life-solid.svg" width="13.125px" height="auto" alt="' + this.messages.all_label + '" title="' + this.messages.all_label + '" />' + item['title'] + '</div>';
+                    markup += '<div class="uip-modal--sidebar-tab-item' + activeClazz + '" data-library-id="' + item['library-id'] + '"><img src="' + (this.options.starUrl || '/images/star-of-life-solid.svg') + '" width="13.125px" height="auto" alt="' + this.messages.all_label + '" title="' + this.messages.all_label + '" />' + item['title'] + '</div>';
                 }
             });
 
