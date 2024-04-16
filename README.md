@@ -231,11 +231,22 @@ Please contact us for any improvement suggestions or send your pull requests
 
 ## Changelog
 
-2022/02/23
+2024/04/16
 
-- First release
-- fix icon selections when changing the icon library programatically with setOptions()
-- update README
+- add language option to set the UI language
+
+2023/03/09
+
+- add loadCustomCss option
+- Double click inserts icon
+
+2023/02/09
+
+- add Fomantic UI icons
+
+2022/11/18
+
+- update npm package
 
 2022/02/26
 
@@ -244,18 +255,11 @@ Please contact us for any improvement suggestions or send your pull requests
 - add the "onBeforeOpen" option
 - add the "onBeforeOpen" demo (demo 5)
 
-2022/11/18
+2022/02/23
 
-- update npm package
-
-2023/02/09
-
-- add Fomantic UI icons
-
-2023/03/09
-
-- add loadCustomCss option
-- Double click inserts icon
+- First release
+- fix icon selections when changing the icon library programatically with setOptions()
+- update README
 
 
 ## License
