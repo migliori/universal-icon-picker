@@ -107,7 +107,7 @@ Clone / download or install with npm
 | onReset          | *Function* | Callback function when the user clicks the `reset` button.<br />Default: `null`                                                        |
 | onSelect         | *Function* | Callback function when the user clicks the `insert` button.<br />Default: `null`                                                       |
 | resetSelector    | *String*   | Selector for the HTML *reset* button on your page.<br />Default: `null`                                                                |
-| language         | *String*   | Language code for the UI messages.<br />Default: `navigator.language || navigator.userLanguage` (browser language)                     |
+| language         | *String*   | Language code for the UI messages.<br />E.g.: 'en'<br>Default: `navigator.language || navigator.userLanguage` (browser language)                     |
 | loadCustomCss    | *Boolean*  | If true, universal icon picker does **not** load its own css allowing for custom css. Default: `false`                                 |
 ## Configuring loaded assets
 
