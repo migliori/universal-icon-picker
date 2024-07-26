@@ -18,7 +18,7 @@ const i18nMessages = {
         all_icons: "Toutes les icônes",
         all_label: "Tout",
         close_label: "Fermer",
-        icon_picker: "Sélecteur d’icônes universel",
+        icon_picker: "Sélecteur d'icônes universel",
         insert_label: "Insérer",
         search_label: "Rechercher",
         search_placeholder: "Filtrer par nom…"
@@ -110,7 +110,8 @@ const i18nMessages = {
             allowEmpty: true,
             iconLibraries: null,
             iconLibrariesCss: null,
-            mode: 'autoload', // autoload | onrequest
+            mode: 'autoload', // autoload | onrequest,
+            parentElement: 'body',
             onBeforeOpen: null,
             onReset: null,
             onSelect: null,
@@ -183,7 +184,7 @@ const i18nMessages = {
                 this.iconLibrariesLoaded = true;
                 if (!document.getElementById('uip-modal' + this.idSuffix)) {
                     //push universal dom to body
-                    document.body.appendChild(this.universalDomEle);
+                    document.querySelector(this.options.parentElement).appendChild(this.universalDomEle);
 
                     //Icon library close by clicking close button
                     this.universalDomEle.querySelector('.uip-modal--header-close-btn').addEventListener('click', () => {

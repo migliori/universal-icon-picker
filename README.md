@@ -67,7 +67,7 @@ Originally forked from [aesthetic-icon-picker](https://github.com/sh-sabbir/aest
 Clone / download or install with npm
 
 ```bash
-  npm install @migliori/universal-icon-picker@1.1.6
+  npm install @migliori/universal-icon-picker@1.1.7
 ```
 
 ## Usage/Examples
@@ -104,6 +104,7 @@ Clone / download or install with npm
 | iconLibraries    | *Array*    | Array of JSON icon libraries in `assets/icons-libraries`.<br />Default: `null`                                                         |
 | iconLibrariesCss | *Array*    | Array of CSS icon libraries in `assets/stylesheets` or from any CDN. Leave empty if your page already loads them.<br />Default: `null` |
 | mode             | *String*   | `'autoload'` or `'onrequest'`. Default: `'autoload'`                                                                                   |
+| parentElement    | *String*   | Selector for the parent element to attach the icon picker to. Default: `body`                                                          |
 | onReset          | *Function* | Callback function when the user clicks the `reset` button.<br />Default: `null`                                                        |
 | onSelect         | *Function* | Callback function when the user clicks the `insert` button.<br />Default: `null`                                                       |
 | resetSelector    | *String*   | Selector for the HTML *reset* button on your page.<br />Default: `null`                                                                |
@@ -230,6 +231,10 @@ Contributions are always welcome!
 Please contact us for any improvement suggestions or send your pull requests
 
 ## Changelog
+
+2024/09/26
+
+- add the parentElement option to attach the icon picker to a specific element
 
 2024/04/16
 
