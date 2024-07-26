@@ -67,7 +67,7 @@ Originally forked from [aesthetic-icon-picker](https://github.com/sh-sabbir/aest
 Clone / download or install with npm
 
 ```bash
-  npm install @migliori/universal-icon-picker@1.1.7
+  npm install @migliori/universal-icon-picker@1.1.8
 ```
 
 ## Usage/Examples
@@ -234,6 +234,7 @@ Please contact us for any improvement suggestions or send your pull requests
 
 2024/09/26
 
+- add the type="button" attribute to the icon picker button
 - add the parentElement option to attach the icon picker to a specific element
 
 2024/04/16
