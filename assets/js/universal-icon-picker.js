@@ -2,6 +2,7 @@
 /*jshint esversion: 8 */
 const scriptUrl = new URL(document.currentScript.src);
 const iconPickerUrl = scriptUrl.origin + scriptUrl.pathname.substring(0, scriptUrl.pathname.lastIndexOf('/js') + 1);
+
 const loadedDependencies = [];
 
 const i18nMessages = {
@@ -140,7 +141,7 @@ const i18nMessages = {
             this.messages = i18nMessages["en"];
         }
 
-        this.universalWrap = '<div class="uip-modal uip-open" id="uip-modal' + this.idSuffix + '"><div class="uip-modal--content"><div class="uip-modal--header"><div class="uip-modal--header-logo-area"><span class="uip-modal--header-logo-title">' + this.messages.icon_picker + '</span></div><div class="uip-modal--header-close-btn"><img src="' + (options.closeUrl || iconPickerUrl + '/images/xmark-solid.svg') + '" width="20" height="16" alt="' + this.messages.close_label + '" title="' + this.messages.close_label + '" /></div></div><div class="uip-modal--body"><div id="uip-modal--sidebar' + this.idSuffix + '" class="uip-modal--sidebar"><div class="uip-modal--sidebar-tabs"></div></div><div id="uip-modal--icon-preview-wrap' + this.idSuffix + '" class="uip-modal--icon-preview-wrap"><div class="uip-modal--icon-search"><input name="" value="" placeholder="' + this.messages.search_placeholder + '"><img src="' + (options.searchUrl || iconPickerUrl + '/images/magnifying-glass-solid.svg') + '" width="20" height="16" alt="' + this.messages.search_label + '" title="' + this.messages.search_label + '" /></div><div class="uip-modal--icon-preview-inner"><div id="uip-modal--icon-preview' + this.idSuffix + '" class="uip-modal--icon-preview"></div></div></div></div><div class="uip-modal--footer"><button type="button" class="uip-insert-icon-button">' + this.messages.insert_label + '</button></div></div></div>';
+        this.universalWrap = '<div class="uip-modal uip-open" id="uip-modal' + this.idSuffix + '"><div class="uip-modal--content"><div class="uip-modal--header"><div class="uip-modal--header-logo-area"><span class="uip-modal--header-logo-title">' + this.messages.icon_picker + '</span></div><div class="uip-modal--header-close-btn"><img src="' + (options.closeUrl || iconPickerUrl + 'images/xmark-solid.svg') + '" width="20" height="16" alt="' + this.messages.close_label + '" title="' + this.messages.close_label + '" /></div></div><div class="uip-modal--body"><div id="uip-modal--sidebar' + this.idSuffix + '" class="uip-modal--sidebar"><div class="uip-modal--sidebar-tabs"></div></div><div id="uip-modal--icon-preview-wrap' + this.idSuffix + '" class="uip-modal--icon-preview-wrap"><div class="uip-modal--icon-search"><input name="" value="" placeholder="' + this.messages.search_placeholder + '"><img src="' + (options.searchUrl || iconPickerUrl + 'images/magnifying-glass-solid.svg') + '" width="20" height="16" alt="' + this.messages.search_label + '" title="' + this.messages.search_label + '" /></div><div class="uip-modal--icon-preview-inner"><div id="uip-modal--icon-preview' + this.idSuffix + '" class="uip-modal--icon-preview"></div></div></div></div><div class="uip-modal--footer"><button type="button" class="uip-insert-icon-button">' + this.messages.insert_label + '</button></div></div></div>';
 
         this.universalDomEle = createDomEle(this.universalWrap);
         this.sidebarTabs = this.universalDomEle.querySelector('.uip-modal--sidebar-tabs');
@@ -174,7 +175,7 @@ const i18nMessages = {
             });
 
             //Remove selected icon
-            if (this.options.resetSelector) {
+            if (this.options.resetSelector !== null && document.querySelector(this.options.resetSelector) !== null) {
                 document.querySelector(this.options.resetSelector).addEventListener('click', this.options.onReset);
             }
         },
@@ -500,7 +501,7 @@ const i18nMessages = {
                     }
                     markup += '<div class="uip-modal--sidebar-tab-item' + activeClazz + '" data-library-id="' + item['library-id'] + '">' + iconTag + item['title'] + '</div>';
                 } else {
-                    markup += '<div class="uip-modal--sidebar-tab-item' + activeClazz + '" data-library-id="' + item['library-id'] + '"><img src="' + (this.options.starUrl || iconPickerUrl + '/images/star-of-life-solid.svg') + '" width="13.125px" height="auto" alt="' + this.messages.all_label + '" title="' + this.messages.all_label + '" />' + item['title'] + '</div>';
+                    markup += '<div class="uip-modal--sidebar-tab-item' + activeClazz + '" data-library-id="' + item['library-id'] + '"><img src="' + (this.options.starUrl || iconPickerUrl + 'images/star-of-life-solid.svg') + '" width="13.125px" height="auto" alt="' + this.messages.all_label + '" title="' + this.messages.all_label + '" />' + item['title'] + '</div>';
                 }
             });
 
