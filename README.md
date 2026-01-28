@@ -234,6 +234,9 @@ Please contact us for any improvement suggestions or send your pull requests
 
 ## Changelog
 
+2026/01/28
+- fix double-slash issue in assets URLs (issue #31)
+
 2024/09/26
 
 - add the type="button" attribute to the icon picker button
